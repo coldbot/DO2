@@ -66,9 +66,9 @@ Papa.parse('modified_data.csv', {
                             borderColor: 'black', // Color of the line
                             borderWidth: 2, // Width of the line
                             label: {
-                                content: '2', // Label text
+                                content: 'Phase 2', // Label text
                                 enabled: true, // Set to false to hide the label
-                                yAdjust: -10, // Adjust the label's vertical position
+                                yAdjust: 0, // Adjust the label's vertical position
                             },
                         },
                     ],
