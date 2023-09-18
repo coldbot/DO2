@@ -61,13 +61,12 @@ Papa.parse('data.csv', {
                             type: 'line',
                             mode: 'vertical',
                             scaleID: 'x',
-                            value: 255, // X-coordinate where you want to draw the line
+                            value: 242, // X-coordinate where you want to draw the line
                             borderColor: 'black', // Color of the line
                             borderWidth: 2, // Width of the line
                             label: {
-                                content: '2', // Label text
+                                content: 'Phase 2', // Label text
                                 enabled: true, // Set to false to hide the label
-                                yAdjust: -10, // Adjust the label's vertical position
                             },
                         },
                     ],
