@@ -1,0 +1,54 @@
+<h1 style="text-align: center;">Decked Out 2 - Player Ranking</h1>
+<canvas id="myChart" style="width:100%;max-width:90%;max-height:80%;display: block;margin-left: auto;margin-right: auto"></canvas>
+<button id="toggle" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all</button> 
+<p>Data source <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml</a> / DO2 Tracking (The Dungeon Archive)</p>
+<p>The rating system is based on what is used for AO2, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br>
+Note! In that system, <b>E</b> represents the probabilty of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overal player success for the difficulty + what level the artifact is at, see table.<br></p>
+<style>
+	.my-class  {
+		overflow: auto;
+		width: 100%;
+	}
+	.my-class th,td, table {
+		border: 1px solid black;
+		text-align: left;
+        padding: 3px;
+	}
+
+    .my-class caption {
+        border: 1px solid black;
+    }
+
+</style>
+<div class="my-class" role="region" tabindex="0">
+<table>
+	<caption>Difficulty Factor used as of 9/18/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2.</caption>
+	<thead>
+	<tr>
+		<th>Easy</th>
+		<th>Medium + LVL1 Artifact</th>
+		<th>Medium + LVL2 Artifact</th>
+		<th>Hard + LVL2 Artifact</th>
+		<th>HARD+LVL3 Artifact</th>
+		<th>Deadly</th>
+		<th>Deep Frost</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>0.45</td>
+		<td>0.75</td>
+		<td>0.13</td>
+		<td>0.24</td>
+		<td>0.00</td>
+		<td>not tested</td>
+		<td>not tested</td>
+	</tr>
+	</tbody>
+</table>
+<br>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script src="script.js"></script>
