@@ -3,7 +3,7 @@
 var myChart; // Declare myChart variable outside the complete function scope
 
 // Load the CSV file and create the chart
-Papa.parse('data.csv', {
+Papa.parse('modified_data.csv', {
     download: true,
     header: true,
     dynamicTyping: true,
@@ -27,6 +27,7 @@ Papa.parse('data.csv', {
                         return row[columnName];
                     }),
                     fill: false,
+                    spanGaps: true, // Add this line to span gaps in the line
                 });
             }
         }
@@ -36,7 +37,7 @@ Papa.parse('data.csv', {
             maintainAspectRatio: true,
             elements: {
                 point: {
-                    radius: 0,
+                    radius: 5,
                     pointStyle: 'none',
                 },
             },
@@ -50,7 +51,7 @@ Papa.parse('data.csv', {
                 y: {
                     title: {
                         display: true,
-                        text: 'ELO Rating', // Y-axis title
+                        text: 'EOL Rating', // Y-axis title
                     },
                 },
             },
@@ -65,8 +66,9 @@ Papa.parse('data.csv', {
                             borderColor: 'black', // Color of the line
                             borderWidth: 2, // Width of the line
                             label: {
-                                content: 'Phase 2', // Label text
+                                content: '2', // Label text
                                 enabled: true, // Set to false to hide the label
+                                yAdjust: -10, // Adjust the label's vertical position
                             },
                         },
                     ],
