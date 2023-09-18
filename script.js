@@ -50,7 +50,7 @@ Papa.parse('data.csv', {
                 y: {
                     title: {
                         display: true,
-                        text: 'EOL Rating', // Y-axis title
+                        text: 'ELO Rating', // Y-axis title
                     },
                 },
             },
