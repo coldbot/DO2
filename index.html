@@ -19,7 +19,7 @@
          p {
             color: rgb(27, 27, 27);
             font-family: 'IBM Plex Sans', sans-serif;
-            line-height: 1.3;
+            line-height: 1.7;
          }
         
         caption {
@@ -78,15 +78,23 @@
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
 <h1>Decked Out 2 - Player Ranking</h1>
 <canvas id="myChart"></canvas>
-<button id="toggle" class="button-43" role="button" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all</button> 
+<button id="toggle" class="button-43" role="button" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all data</button> 
 
 <p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
 
-<p>The rating system is based on what is used for Age of Empires II, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br>
-Note! In that system, <b>E</b> represents the probabilty of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overal player success for the difficulty + what level the artifact is at, see table:<br></p>
+<p>The rating system is based on what is used for Age of Empires II, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br></p>
+
+<p style="text-align: center;">ELO Rating Equation:<br><b>R2 = R1 + (K(S-E))</b></p>
+
+<p><b>R2</b> is the new rating after a run. <b>R1</b> is the players rating before the run. <b>S</b> is 1 if the player succeed or 0 if they failed.
+<b>E</b> represents the probability of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overall player success for the difficulty + what level the artifact is at (Table 1). <b>E</b> will modify the how much a 
+players ELO rank increases or decreases. The maximum value a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
+If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or loose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or loose 6.4 points if they fail. All players start with a rating of 1000.
+
+</p>
 <div class="spacer"></div>
     <table id="difficulty_factor_table">
-        <caption>Difficulty Factor used as of 9/18/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2. Seperate difficulty facotors will be calculated for each phase.</caption>
+        <caption>Table 1. Difficulty Factors (<b>E</b>) used as of 9/18/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2 runs. Seperate difficulty facotors will be calculated for each phase.</caption>
         <thead>
         <tr>
             <th></th>
@@ -120,11 +128,73 @@ Note! In that system, <b>E</b> represents the probabilty of winning against a pl
             <td>TBA</td>
             <td>TBA</td>
         </tr>
+        <tr>   
+            <td><b>Phase 3:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
+        <tr>   
+            <td><b>Phase 4:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
+        <tr>   
+            <td><b>Phase 5:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
+        <tr>   
+            <td><b>Phase 6:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
+        <tr>   
+            <td><b>Phase 7:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
+        <tr>   
+            <td><b>Phase 8:</b></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+        </tr>
         </tbody>
     </table>
 
 <br>
+<div class="spacer"></div>
 </body>
+
 <sub>
 <p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2 Wiki</a> | <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek YouTube</a></p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
