@@ -1,27 +1,53 @@
-<h1 style="text-align: center;">Decked Out 2 - Player Ranking</h1>
-<div style="display:block;margin-left:auto;margin-right:auto;max-width: 80%;">
+<!DOCTYPE html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+    </style>
+    <style>
+        h1 {
+            color: rgb(27, 27, 27);
+            font-size: 45px;
+            font-family: 'Averia Serif Libre', cursive;
+         }
+
+         p {
+            color: rgb(27, 27, 27);
+            font-family: 'Averia Serif Libre', cursive;
+            font-weight: 100;
+         }
+
+        .my-class  {
+            display:block;
+            margin-left:auto;
+            margin-right:auto
+        }
+        .my-class th,td, table {
+            border: 1px solid black;
+            text-align: left;
+            color: rgb(27, 27, 27);
+            padding: 3px;
+            font-family: 'Averia Serif Libre', cursive;
+        }
+    
+        .my-class caption {
+            border: 1px solid black;
+        }
+    
+    </style>
+</head>
+<body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
+<h1>Decked Out 2 - Player Ranking</h1>
 <canvas id="myChart"></canvas>
-</div>
 <button id="toggle" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all</button> 
-<p>Data source <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml</a> / DO2 Tracking (The Dungeon Archive)</p>
-<p>The rating system is based on what is used for AO2, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br>
+<p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
+<p>The rating system is based on what is used for Age of Empires II, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br>
 Note! In that system, <b>E</b> represents the probabilty of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overal player success for the difficulty + what level the artifact is at, see table.<br></p>
-<style>
-	.my-class  {
-		overflow: auto;
-		width: 100%;
-	}
-	.my-class th,td, table {
-		border: 1px solid black;
-		text-align: left;
-        padding: 3px;
-	}
-
-    .my-class caption {
-        border: 1px solid black;
-    }
-
-</style>
 <div class="my-class" role="region" tabindex="0">
 <table>
 	<caption>Difficulty Factor used as of 9/18/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2.</caption>
@@ -50,7 +76,11 @@ Note! In that system, <b>E</b> represents the probabilty of winning against a pl
 </table>
 <br>
 </div>
+</body>
+<sub>
+<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2 Wiki</a> | <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek YouTube</a></p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 <script src="script.js"></script>
+</sub>
