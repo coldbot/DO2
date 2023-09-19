@@ -37,7 +37,7 @@ Papa.parse('modified_data.csv', {
             maintainAspectRatio: true,
             elements: {
                 point: {
-                    radius: 5,
+                    radius: 6,
                     pointStyle: 'none',
                 },
             },
@@ -51,7 +51,7 @@ Papa.parse('modified_data.csv', {
                 y: {
                     title: {
                         display: true,
-                        text: 'EOL Rating', // Y-axis title
+                        text: 'Elo Rating', // Y-axis title
                     },
                 },
             },

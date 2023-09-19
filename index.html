@@ -44,57 +44,28 @@
             height: 40px;
             width: 100%;
         }
-
-        /* CSS */
-        .button-43 {
-        background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
-        border-radius: .5rem;
-        box-sizing: border-box;
-        color: #FFFFFF;
-        display: flex;
-        font-size: 14px;
-        justify-content: center;
-        padding: 1rem 1.75rem;
-        text-decoration: none;
-        border: 0;
-        cursor: pointer;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        }
-
-        .button-43:hover {
-        background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
-        }
-
-        @media (min-width: 768px) {
-        .button-43 {
-            padding: 1rem 2rem;
-        }
-
-        }
     </style>
 </head>
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
 <h1>Decked Out 2 - Player Ranking</h1>
+<button id="toggle" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all data</button> 
 <canvas id="myChart"></canvas>
-<button id="toggle" class="button-43" role="button" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all data</button> 
 
 <p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
 
-<p>The rating system is based on what is used for Age of Empires II, see <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">this Reddit post</a>.<br></p>
+<p>The rating system is based on the Elo Rating system by Arpad Elo, read his publication <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">here</a>.<br></p>
 
-<p style="text-align: center;">ELO Rating Equation:<br><b>R2 = R1 + (K(S-E))</b></p>
+<p style="text-align: center;">Elo Rating formula:<br><b>R2 = R1 + (K(S-E))</b></p>
 
 <p><b>R2</b> is the new rating after a run. <b>R1</b> is the players rating before the run. <b>S</b> is 1 if the player succeed or 0 if they failed.
 <b>E</b> represents the probability of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overall player success for the difficulty + what level the artifact is at (Table 1). <b>E</b> will modify how much a 
-players ELO rank increases or decreases. The maximum value a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
+players Elorank increases or decreases. The maximum value a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
 If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or loose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or loose 6.4 points if they fail. All players start with a rating of 1000.
 
 </p>
 <div class="spacer"></div>
     <table id="difficulty_factor_table">
-        <caption>Table 1. Difficulty Factors (<b>E</b>) used as of 9/19/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2 runs. Seperate difficulty facotors will be calculated for each phase.</caption>
+        <caption>Table 1. Difficulty Factors (<b>E</b>) used as of 9/18/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Numbers are based on all DO2 runs. Seperate difficulty facotors will be calculated for each phase.</caption>
         <thead>
         <tr>
             <th></th>
@@ -120,13 +91,13 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         </tr>
         <tr>   
             <td><b>Phase 2:</b></td>
-            <td>0.67</td>
-            <td>0.82</td>
-            <td>0.33</td>
-            <td>0.33</td>
-            <td>0</td>
-            <td></td>
-            <td></td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
+            <td>TBA</td>
         </tr>
         <tr>   
             <td><b>Phase 3:</b></td>
