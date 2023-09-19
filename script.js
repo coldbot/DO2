@@ -1,8 +1,11 @@
 // Add this code to your JavaScript file
 
 var myChart; // Declare myChart variable outside the complete function scope
-
+var myBarChart
 // Load the CSV file and create the chart
+
+var randomColors = generateRandomColors(60); // Generate random colors for the line chart datasets
+
 Papa.parse('modified_data.csv', {
     download: true,
     header: true,
@@ -22,15 +25,17 @@ Papa.parse('modified_data.csv', {
             if (columnName !== 'Run No.') {
                 datasets.push({
                     label: columnName,
-                    borderColor: getRandomColor(),
+                    borderColor: randomColors[datasets.length], // Use the same random color for lines
                     data: data.map(function (row) {
                         return row[columnName];
                     }),
                     fill: false,
-                    spanGaps: true, // Add this line to span gaps in the line
+                    spanGaps: true,
                 });
             }
         }
+
+
 
         var options = {
             responsive: true,
@@ -76,8 +81,8 @@ Papa.parse('modified_data.csv', {
             },
         };
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        myChart = new Chart(ctx, {
+        var ctx1 = document.getElementById('myChart').getContext('2d');
+        myChart = new Chart(ctx1, {
             type: 'line',
             data: {
                 labels: labels,
@@ -85,18 +90,94 @@ Papa.parse('modified_data.csv', {
             },
             options: options,
         });
-
-        // Function to generate random colors
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
     },
 });
+
+
+Papa.parse('standings_data.csv', {
+    download: true,
+    header: false, // Set to false since the first row is not a header
+    dynamicTyping: true,
+    complete: function (results) {
+        var data = results.data;
+
+        // Assuming the first row contains labels, and the second row contains data values
+        var labels = data[0]; // Labels from the first row
+        var dataset = data[1]; // Data values from the second row
+
+        // Create an array of objects to store labels and data values together
+        var dataWithLabels = [];
+        for (var i = 0; i < labels.length; i++) {
+            dataWithLabels.push({
+                label: labels[i],
+                value: dataset[i]
+            });
+        }
+
+        // Sort the dataWithLabels array by data values in descending order
+        dataWithLabels.sort(function(a, b) {
+            return b.value - a.value;
+        });
+
+        // Extract sorted labels and data values from the sorted array
+        var sortedLabels = dataWithLabels.map(function(item) {
+            return item.label;
+        });
+        var sortedDataset = dataWithLabels.map(function(item) {
+            return item.value;
+        });
+
+        // Calculate the suggestedMin for the y-axis
+        var suggestedMin = Math.min(...sortedDataset) - 50;
+
+        // Generate random colors for each bar in the dataset
+        var backgroundColor = randomColors; // Use the same random colors for bars
+
+        var barChartData = {
+            labels: sortedLabels, // Use the sorted labels
+            datasets: [{
+                label: 'Current Rating', // Replace with your desired label
+                backgroundColor: backgroundColor,
+                borderColor: 'rgb(0, 0, 0, 0)',
+                borderWidth: 1,
+                data: sortedDataset, // Use the sorted data values
+            }]
+        };
+
+        var ctx2 = document.getElementById('barChart').getContext('2d');
+        var myBarChart = new Chart(ctx2, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                responsive: true,
+                aspectRatio: 5 / 1, // Set the aspect ratio to 16:9
+                scales: {
+                    y: {
+                        beginAtZero: false, // Set this to false to start from a custom minimum
+                        suggestedMin: suggestedMin, // Set the suggestedMin to the calculated value
+                    },
+                },
+                plugins: {
+                    legend: {
+                        display: false, // Hide the legend
+                    },
+                },
+            },
+        });
+    }
+});
+
+
+
+// Function to generate random colors
+function generateRandomColors(count) {
+    var randomColors = [];
+    for (var i = 0; i < count; i++) {
+        var color = '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+        randomColors.push(color);
+    }
+    return randomColors;
+}
 
 // Add event listener for the "toggle" button
 document.getElementById('toggle').addEventListener('click', function () {

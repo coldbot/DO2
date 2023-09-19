@@ -10,10 +10,13 @@
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
     </style>
     <style>
-        h1 {
+        h1, h2, h3 {
             color: rgb(27, 27, 27);
-            font-size: 45px;
             font-family: 'Averia Serif Libre', cursive;
+         }
+         
+         h1 {
+            font-size: 45px;  
          }
 
          p {
@@ -47,7 +50,10 @@
     </style>
 </head>
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
-<h1>Decked Out 2 - Player Ranking</h1>
+<h1>Decked Out 2 - Player Rating</h1>
+<p>Decked Out 2 is a competitive, deck-building, dungeon crawler game created in Minecraft by TangoTek as part of his main base. Here, the players are given points for wins, or subtracted points if the fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See bottom of page for more info.</p><h2>Highest to lowest rated players</h2>
+<canvas id="barChart"></canvas>
+<h2>Timeline of rating progression</h2>
 <button id="toggle" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all data</button> 
 <canvas id="myChart"></canvas>
 
