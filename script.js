@@ -119,28 +119,21 @@ Papa.parse('standings_data.csv', {
             return b.value - a.value;
         });
 
-        // Extract sorted labels and data values from the sorted array
-        var sortedLabels = dataWithLabels.map(function(item) {
-            return item.label;
-        });
-        var sortedDataset = dataWithLabels.map(function(item) {
-            return item.value;
-        });
 
         // Calculate the suggestedMin for the y-axis
-        var suggestedMin = Math.min(...sortedDataset) - 50;
+        var suggestedMin = Math.min(...dataset) - 50;
 
         // Generate random colors for each bar in the dataset
         var backgroundColor = randomColors; // Use the same random colors for bars
 
         var barChartData = {
-            labels: sortedLabels, // Use the sorted labels
+            labels: labels, // Use the sorted labels
             datasets: [{
                 label: 'Current Rating', // Replace with your desired label
                 backgroundColor: backgroundColor,
                 borderColor: 'rgb(0, 0, 0, 0)',
                 borderWidth: 1,
-                data: sortedDataset, // Use the sorted data values
+                data: dataset, // Use the sorted data values
             }]
         };
 
