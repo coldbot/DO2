@@ -51,7 +51,7 @@ Papa.parse('modified_data.csv', {
                 y: {
                     title: {
                         display: true,
-                        text: 'Elo Rating', // Y-axis title
+                        text: 'Decked Out 2 Rating', // Y-axis title
                     },
                 },
             },

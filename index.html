@@ -53,13 +53,13 @@
 
 <p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
 
-<p>The rating system is based on the Elo Rating system by Arpad Elo, read his publication <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">here</a>.<br></p>
+<p>The rating system is based formula 2 by Arpad Elo found in <a href="https://www.reddit.com/r/aoe2/comments/iayfi6/aoe2_elo_rating_system_explained/">his publication</a>.<br></p>
 
-<p style="text-align: center;">Elo Rating formula:<br><b>R2 = R1 + (K(S-E))</b></p>
+<p style="text-align: center;">Decked Out 2 Rating Formula:<br><b>R2 = R1 + (K(S-E))</b></p>
 
 <p><b>R2</b> is the new rating after a run. <b>R1</b> is the players rating before the run. <b>S</b> is 1 if the player succeed or 0 if they failed.
 <b>E</b> represents the probability of winning against a player. But as DO2 is a single player game, <b>E</b> is calculated as the overall player success for the difficulty + what level the artifact is at (Table 1). <b>E</b> will modify how much a 
-players Elorank increases or decreases. The maximum value a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
+players rank increases or decreases. The maximum value a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
 If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or loose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or loose 6.4 points if they fail. All players start with a rating of 1000.
 
 </p>
