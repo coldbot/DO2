@@ -1,12 +1,72 @@
-// Add this code to your JavaScript file
 
-var myChart; // Declare myChart variable outside the complete function scope
-var myBarChart
+// Add this code to your JavaScript file
+var myBarChart;
 // Load the CSV file and create the chart
 
 var randomColors = generateRandomColors(60); // Generate random colors for the line chart datasets
 
-Papa.parse('modified_data.csv', {
+var myChart = null; // Declare myChart variable outside the complete function scope
+var myCSV = "modified_data.csv"; // Initial CSV file
+
+
+// Function to change the CSV file when Button is clicked
+document.getElementById("button1").addEventListener("click", function () {
+    myCSV = "modified_data.csv";
+    updateChart(myCSV); // Update the chart when the CSV changes
+});
+
+document.getElementById("button2").addEventListener("click", function () {
+    myCSV = "phase1_modified_data.csv";
+    updateChart(myCSV); // Update the chart when the CSV changes
+});
+
+document.getElementById("button3").addEventListener("click", function () {
+    myCSV = "phase2_modified_data.csv";
+    updateChart(myCSV); // Update the chart when the CSV changes
+});
+
+function updateChart(newCSV) {
+    Papa.parse(newCSV, {
+        download: true,
+        header: true,
+        dynamicTyping: true,
+        complete: function (results) {
+            var data = results.data;
+
+            // Extract X and Y data from the CSV columns
+            var labels = data.map(function (row) {
+                return row['Run No.'];
+            });
+
+            var datasets = [];
+
+            // Loop through Y columns and create datasets
+            for (var columnName in data[0]) {
+                if (columnName !== 'Run No.') {
+                    datasets.push({
+                        label: columnName,
+                        borderColor: randomColors[datasets.length], // Use the same random color for lines
+                        data: data.map(function (row) {
+                            return row[columnName];
+                        }),
+                        fill: false,
+                        spanGaps: true,
+                    });
+                }
+            }
+
+            var myLine = (newCSV === "modified_data.csv") ? 242 : 1000; // Adjust the line based on the CSV file
+
+            // Update the chart with new data and annotations
+            myChart.data.labels = labels;
+            myChart.data.datasets = datasets;
+            myChart.options.plugins.annotation.annotations[0].value = myLine;
+            myChart.update();
+        },
+    });
+}
+
+Papa.parse(myCSV, {
     download: true,
     header: true,
     dynamicTyping: true,
@@ -35,7 +95,11 @@ Papa.parse('modified_data.csv', {
             }
         }
 
-
+        if (myCSV == "modified_data.csv"){
+            var myborder = 2;
+        } else {
+            var myborder = 0;
+        }
 
         var options = {
             responsive: true,
@@ -69,7 +133,7 @@ Papa.parse('modified_data.csv', {
                             scaleID: 'x',
                             value: 242, // X-coordinate where you want to draw the line
                             borderColor: 'black', // Color of the line
-                            borderWidth: 2, // Width of the line
+                            borderWidth: myborder, // Width of the line
                             label: {
                                 content: 'Phase 2', // Label text
                                 enabled: true, // Set to false to hide the label
@@ -92,6 +156,8 @@ Papa.parse('modified_data.csv', {
         });
     },
 });
+
+
 
 
 Papa.parse('standings_data.csv', {
@@ -161,7 +227,6 @@ Papa.parse('standings_data.csv', {
 });
 
 
-
 // Function to generate random colors
 function generateRandomColors(count) {
     var randomColors = [];
@@ -180,4 +245,3 @@ document.getElementById('toggle').addEventListener('click', function () {
     });
     myChart.update(); // Update the chart to reflect the changes
 });
-

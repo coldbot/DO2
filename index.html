@@ -7,9 +7,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-    </style>
-    <style>
         h1, h2, h3 {
             color: rgb(27, 27, 27);
             font-family: 'Averia Serif Libre', cursive;
@@ -38,24 +35,65 @@
             border-collapse: collapse;
         }
         
-        th {
+        thead {
             border-bottom: 1px solid black;
+        }
+
+        th {
             padding: 12px;
+            padding-top: 2px;
+            padding-bottom: 2px;
         }
         
         .spacer {
             height: 40px;
             width: 100%;
         }
+
+        .button {
+            background-color: rgb(102, 217, 255);
+            font-size: 16px;
+            padding: 10px 32px;
+            border-radius: 5px;
+            border: 0;
+            font-family: 'IBM Plex Sans', sans-serif;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: rgb(85, 181, 212);
+            color: white;
+        }
+
     </style>
 </head>
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
 <h1>Decked Out 2 - Player Rating</h1>
 <p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> as part of his main base. 
-This little page tries to rank the players of Decked Out 2 based on their successes and failures in the dungeon. The players are given points for wins, or subtracted points if they fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See bottom of page for more info.</p><h2>Highest to lowest rated players</h2>
+This little page tries to rank the players of Decked Out 2 based on their successes and failures in the dungeon. The players are given points for wins, or subtracted points if they fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See bottom of page for more info.</p>
+<h2>Highest to Lowest Rated Players</h2>
 <canvas id="barChart"></canvas>
-<h2>Timeline of rating progression</h2>
-<button id="toggle" style="display:block;margin-left:auto;margin-right:auto" >Show/hide all data</button> 
+<h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
+<button id="toggle" class="button">Show/hide data</button> 
+<button id="button1" class="button">All phases</button> 
+<button id="button2" class="button">Phase 1</button> 
+<button id="button3" class="button">Phase 2</button> 
+<script>
+    const timelineHeading = document.getElementById("timelineheading");
+
+    document.getElementById("button1").addEventListener("click", function () {
+        timelineHeading.textContent = "Timeline of Rating Progression / All Phases";
+    });
+
+    document.getElementById("button2").addEventListener("click", function () {
+        timelineHeading.textContent = "Timeline of Rating Progression / Phase 1";
+    });
+
+    document.getElementById("button3").addEventListener("click", function () {
+        timelineHeading.textContent = "Timeline of Rating Progression / Phase 2";
+    });
+
+</script>
 <canvas id="myChart"></canvas>
 
 <p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
@@ -65,7 +103,7 @@ This little page tries to rank the players of Decked Out 2 based on their succes
 <p style="text-align: center;">Decked Out 2 Rating Formula:<br><b>R2 = R1 + (K(S-E))</b></p>
 
 <p><b>R2</b> is the new rating after a run. <b>R1</b> is the players rating before the run. <b>S</b> is 1 if the player succeed or 0 if they failed.
-<b>E</b> represents the probability of succeeding in the dungeon. <b>E</b> is calculated per phase in the game based on the overall player success for the X difficulty and Y level the artifact (Table 1). <b>E</b> will modify how much a 
+<b>E</b> represents the probability of succeeding in the dungeon. <b>E</b> is calculated per phase in the game based on the overall player success for the X difficulty and Y level artifact (Table 1). <b>E</b> will modify how much a 
 players rating increases or decreases. The maximum points a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. Some examples: If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
 If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or loose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or loose 6.4 points if they fail. All players start with a rating of 1000.
 <p>As <b>E</b> values will change a lot during a phase (every new run brings a new estimate), expect player ratings to also change a lot during an active phase. Player ratings are only fixed for phases that are completed and were all the runs for the phase is accounted for.</p>
@@ -77,13 +115,22 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         <tr>
             <th></th>
             <th>Easy</th>
-            <th>Medium<br>LVL1 Artifact</th>
-            <th>Medium<br>LVL2 Artifact</th>
-            <th>Hard<br>LVL2 Artifact</th>
-            <th>Hard<br>LVL3 Artifact</th>
+            <th>Medium</th>
+            <th>Medium</th>
+            <th>Hard</th>
+            <th>Hard</th>
             <th>Deadly</th>
             <th>Deep Frost</th>
         </tr>
+        <th></th>
+        <th></th>
+        <th>Level 1 Artifact</th>
+        <th>Level 2 Artifact</th>
+        <th>Level 2 Artifact</th>
+        <th>Level 3 Artifact</th>
+        <th></th>
+        <th></th>
+    </tr>
         </thead>
         <tbody>
         <tr>   
@@ -102,72 +149,73 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
             <td>0.87</td>
             <td>0.33</td>
             <td>0.25</td>
-            <td>0</td>
+            <td>0.00*</td>
             <td></td>
             <td></td>
         </tr>
         <tr>   
             <td><b>Phase 3:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>   
             <td><b>Phase 4:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>   
             <td><b>Phase 5:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>   
             <td><b>Phase 6:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>   
             <td><b>Phase 7:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>   
             <td><b>Phase 8:</b></td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
-            <td>TBA</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         </tbody>
     </table>
+    <p style="font-size: 12px;text-align: center;">*More runs needed to calcualte the probability.</p>
 
 <br>
 <div class="spacer"></div>
