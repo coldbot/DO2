@@ -64,15 +64,14 @@
             background-color: rgb(85, 181, 212);
             color: white;
         }
-
     </style>
 </head>
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
-<h1>Decked Out 2 - Player Rating</h1>
-<p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
+<h1>Decked Out 2 - Player Ratings</h1>
+<p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
     as part of his main base. 
-This little page tries to rank the players of Decked Out 2 based on their successes and failures in the dungeon. The players are given points for wins, 
-or subtracted points if they fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
+This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for &#128081; wins , 
+or subtracted points if they &#127987; fail in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
 <h2>Highest to Lowest Rated Players</h2>
 <canvas id="barChart"></canvas>
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
@@ -102,12 +101,12 @@ or subtracted points if they fail in the Decked Out dungeon. The amount of point
 <h2 id="how_ratings_are_calculated">How ratings are calculated</h2>
 <p>The rating system is based formula 2 by Arpad Elo found in <a href="https://gwern.net/doc/statistics/order/comparison/1978-elo-theratingofchessplayerspastandpresent.pdf">his publication</a>.<br></p>
 
-<p style="text-align: center;">Decked Out 2 Rating Formula:<br><b>R2 = R1 + (K(S-E))</b></p>
+<p style="text-align: center;"><span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> Rating Formula:<br><b>R2 = R1 + (K(S-E))</b></p>
 
 <p><b>R2</b> is the new rating after a run. <b>R1</b> is the players rating before the run. <b>S</b> is 1 if the player succeed or 0 if they failed.
 <b>E</b> represents the probability of succeeding in the dungeon. <b>E</b> is calculated per phase in the game based on the overall player success for the X difficulty and Y level artifact (Table 1). <b>E</b> will modify how much a 
-players rating increases or decreases. The maximum points a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. Some examples: If <b>E</b> equals 0.5, a player will gain or loose 12.5 points if they succeed or fail. 
-If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or loose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or loose 6.4 points if they fail. All players start with a rating of 1000.
+players rating increases or decreases. The maximum points a player can have added or subtracted to their ranking is <b>K</b>, and it's set to 32. Some examples: If <b>E</b> equals 0.5, a player will gain or lose 12.5 points if they succeed or fail. 
+If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or lose 25.6 points if they fail. If <b>E</b> is low, say 0.2, a player will gain 25.6 points if they succeed or lose 6.4 points if they fail. All players start with a rating of 1000.
 <p>As <b>E</b> values will change a lot during a phase (every new run brings a new estimate), expect player ratings to also change a lot during an active phase. Player ratings are only fixed for phases that are completed and were all the runs for the phase is accounted for.</p>
 </p>
 <div class="spacer"></div>
@@ -224,7 +223,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 </body>
 
 <sub>
-<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2 Wiki</a> | <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek YouTube</a></p>
+<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2 Wiki</a> | <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek YouTube</a><br>Page maintained by kaldbloding (discord)</p>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
