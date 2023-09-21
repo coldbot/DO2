@@ -7,8 +7,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
+        html {
+            background-color: black;
+        }
+
+        body {
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+            max-width:80%;
+        }
+
+        .Mycontent {
+            height: 100%;
+            padding: 25px;
+            background-color: rgb(19,22,35);;
+            margin-top: 25px;
+            border-left:   5px solid rgb(48,68,150);
+            
+        }
+
         h1, h2, h3 {
-            color: rgb(27, 27, 27);
+            color: rgb(255, 255, 255);
             font-family: 'Averia Serif Libre', cursive;
          }
          
@@ -17,7 +37,7 @@
          }
 
          p {
-            color: rgb(27, 27, 27);
+            color: rgb(255, 255, 255);
             font-family: 'IBM Plex Sans', sans-serif;
             line-height: 1.7;
          }
@@ -30,11 +50,15 @@
             margin-left: auto;
             margin-right: auto;
             text-align: center;
-            color: rgb(27, 27, 27);
+            color: rgb(255, 255, 255);
             font-family: 'IBM Plex Sans', sans-serif;
             border-collapse: collapse;
         }
         
+        a {
+            color: rgb(102, 217, 255);
+        }
+
         thead {
             border-bottom: 1px solid black;
         }
@@ -51,34 +75,49 @@
         }
 
         .button {
-            background-color: rgb(102, 217, 255);
+            background-color: rgb(48,68,150);
+            color: white;
+            font-weight: 700;
             font-size: 16px;
             padding: 10px 32px;
             border-radius: 5px;
             border: 0;
             font-family: 'IBM Plex Sans', sans-serif;
             cursor: pointer;
+            margin-left: 5px;
+        }
+
+        #button1 {
+            background-color: rgb(159,197,232);
         }
 
         .button:hover {
-            background-color: rgb(85, 181, 212);
+            background-color: rgb(159,197,232);
             color: white;
         }
     </style>
 </head>
-<body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
+<body>
+<div class="spacer"></div>
+<div class="Mycontent">
 <h1>Decked Out 2 - Player Ratings</h1>
 <p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
-    as part of his main base. 
-This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for &#128081; wins , 
-or subtracted points if they &#127987; fail in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
+    as part of his main base. <br>
+This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for wins &#128081; , 
+or subtracted points if they fail &#128128; in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
+</div>
+<div class="Mycontent">
 <h2>Highest to Lowest Rated Players</h2>
 <canvas id="barChart"></canvas>
+<p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
+</div>
+<div class="Mycontent">
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
 <button id="toggle" class="button">Show/hide data</button> 
 <button id="button1" class="button">All phases</button> 
 <button id="button2" class="button">Phase 1</button> 
 <button id="button3" class="button">Phase 2</button> 
+<br><br>
 <script>
     const timelineHeading = document.getElementById("timelineheading");
 
@@ -96,8 +135,9 @@ or subtracted points if they &#127987; fail in the <span style="font-family: 'Av
 
 </script>
 <canvas id="myChart"></canvas>
-
-<p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
+<p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
+</div>
+<div class="Mycontent">
 <h2 id="how_ratings_are_calculated">How ratings are calculated</h2>
 <p>The rating system is based formula 2 by Arpad Elo found in <a href="https://gwern.net/doc/statistics/order/comparison/1978-elo-theratingofchessplayerspastandpresent.pdf">his publication</a>.<br></p>
 
@@ -220,6 +260,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 
 <br>
 <div class="spacer"></div>
+</div>
 </body>
 
 <sub>

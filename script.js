@@ -13,16 +13,25 @@ var myCSV = "modified_data.csv"; // Initial CSV file
 document.getElementById("button1").addEventListener("click", function () {
     myCSV = "modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
+    document.getElementById("button1").style.backgroundColor = "rgb(159,197,232)";
+    document.getElementById("button2").style.backgroundColor = "rgb(48,68,150)"; 
+    document.getElementById("button3").style.backgroundColor = "rgb(48,68,150)"; 
 });
 
 document.getElementById("button2").addEventListener("click", function () {
     myCSV = "phase1_modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
+    document.getElementById("button1").style.backgroundColor = "rgb(48,68,150)";
+    document.getElementById("button2").style.backgroundColor = "rgb(159,197,232)"; 
+    document.getElementById("button3").style.backgroundColor = "rgb(48,68,150)"; 
 });
 
 document.getElementById("button3").addEventListener("click", function () {
     myCSV = "phase2_modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
+    document.getElementById("button1").style.backgroundColor = "rgb(48,68,150)";
+    document.getElementById("button2").style.backgroundColor = "rgb(48,68,150)"; 
+    document.getElementById("button3").style.backgroundColor = "rgb(159,197,232)"; 
 });
 
 function updateChart(newCSV) {
@@ -115,13 +124,27 @@ Papa.parse(myCSV, {
                     title: {
                         display: true,
                         text: 'Total Decked Out 2 Runs', // X-axis title
+                        color: 'white',
+                    },
+                    ticks: {
+                        color: 'white',
+                    },
+                    grid: {
+                        color: 'rgba(211, 211, 211, 0)' // Light gray grid lines
                     },
                 },
                 y: {
                     title: {
                         display: true,
+                        color: 'white',
                         text: 'Decked Out 2 Rating', // Y-axis title
                     },
+                    ticks: {
+                        color: 'white',
+                    },
+                    grid: {
+                        color: 'rgba(211, 211, 211, 0.1)' // Light gray grid lines
+                    }
                 },
             },
             plugins: {
@@ -132,19 +155,27 @@ Papa.parse(myCSV, {
                             mode: 'vertical',
                             scaleID: 'x',
                             value: 241, // X-coordinate where you want to draw the line
-                            borderColor: 'black', // Color of the line
+                            borderColor: 'white', // Color of the line
                             borderWidth: myborder, // Width of the line
                             label: {
                                 content: 'Phase 2', // Label text
                                 enabled: true, // Set to false to hide the label
+                                backgroundColor: 'white',
+                                color: 'black',
                                 yAdjust: 0, // Adjust the label's vertical position
                             },
                         },
                     ],
                 },
+                legend: {
+                    labels: {
+                        color: 'white', // Set legend text color to white
+                    },
+                },
             },
         };
 
+    
         var ctx1 = document.getElementById('myChart').getContext('2d');
         myChart = new Chart(ctx1, {
             type: 'line',
@@ -158,20 +189,14 @@ Papa.parse(myCSV, {
 });
 
 
-
-
 Papa.parse('standings_data.csv', {
     download: true,
-    header: false, // Set to false since the first row is not a header
+    header: false,
     dynamicTyping: true,
     complete: function (results) {
         var data = results.data;
-
-        // Assuming the first row contains labels, and the second row contains data values
-        var labels = data[0]; // Labels from the first row
-        var dataset = data[1]; // Data values from the second row
-
-        // Create an array of objects to store labels and data values together
+        var labels = data[0];
+        var dataset = data[1];
         var dataWithLabels = [];
         for (var i = 0; i < labels.length; i++) {
             dataWithLabels.push({
@@ -179,27 +204,21 @@ Papa.parse('standings_data.csv', {
                 value: dataset[i]
             });
         }
-
-        // Sort the dataWithLabels array by data values in descending order
         dataWithLabels.sort(function(a, b) {
             return b.value - a.value;
         });
 
-
-        // Calculate the suggestedMin for the y-axis
         var suggestedMin = Math.min(...dataset) - 50;
-
-        // Generate random colors for each bar in the dataset
-        var backgroundColor = randomColors; // Use the same random colors for bars
+        var backgroundColor = randomColors;
 
         var barChartData = {
-            labels: labels, // Use the sorted labels
+            labels: labels,
             datasets: [{
-                label: 'Current Rating', // Replace with your desired label
+                label: 'Current Rating',
                 backgroundColor: backgroundColor,
                 borderColor: 'rgb(0, 0, 0, 0)',
                 borderWidth: 1,
-                data: dataset, // Use the sorted data values
+                data: dataset,
             }]
         };
 
@@ -209,22 +228,53 @@ Papa.parse('standings_data.csv', {
             data: barChartData,
             options: {
                 responsive: true,
-                aspectRatio: 5 / 1, // Set the aspect ratio to 16:9
+                aspectRatio: 5 / 1,
                 scales: {
                     y: {
-                        beginAtZero: false, // Set this to false to start from a custom minimum
-                        suggestedMin: suggestedMin, // Set the suggestedMin to the calculated value
+                        beginAtZero: false,
+                        suggestedMin: suggestedMin,
+                        ticks: {
+                            color: 'white',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Y Axis Label',
+                            color: 'white',
+                        },
+                        grid: {
+                            color: 'rgba(211, 211, 211, 0.3)' // Light gray grid lines
+                        }
                     },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'X Axis Label',
+                            color: 'white',
+                        },
+                        ticks: {
+                            color: 'white',
+                        },
+                        grid: {
+                            color: 'rgba(211, 211, 211, 0.3)' // Light gray grid lines
+                        }
+                    }
                 },
                 plugins: {
                     legend: {
-                        display: false, // Hide the legend
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'My Bar Chart',
+                        color: 'white',
                     },
                 },
             },
         });
     }
 });
+
+
 
 
 // Function to generate random colors
