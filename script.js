@@ -131,7 +131,7 @@ Papa.parse(myCSV, {
                             type: 'line',
                             mode: 'vertical',
                             scaleID: 'x',
-                            value: 242, // X-coordinate where you want to draw the line
+                            value: 241, // X-coordinate where you want to draw the line
                             borderColor: 'black', // Color of the line
                             borderWidth: myborder, // Width of the line
                             label: {

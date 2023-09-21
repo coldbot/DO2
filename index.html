@@ -69,8 +69,10 @@
 </head>
 <body style="display:block;margin-left:auto;margin-right:auto;max-width:80%;">
 <h1>Decked Out 2 - Player Rating</h1>
-<p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> as part of his main base. 
-This little page tries to rank the players of Decked Out 2 based on their successes and failures in the dungeon. The players are given points for wins, or subtracted points if they fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See bottom of page for more info.</p>
+<p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
+    as part of his main base. 
+This little page tries to rank the players of Decked Out 2 based on their successes and failures in the dungeon. The players are given points for wins, 
+or subtracted points if they fail in the Decked Out dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
 <h2>Highest to Lowest Rated Players</h2>
 <canvas id="barChart"></canvas>
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
@@ -97,7 +99,7 @@ This little page tries to rank the players of Decked Out 2 based on their succes
 <canvas id="myChart"></canvas>
 
 <p>Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a>.</p>
-
+<h2 id="how_ratings_are_calculated">How ratings are calculated</h2>
 <p>The rating system is based formula 2 by Arpad Elo found in <a href="https://gwern.net/doc/statistics/order/comparison/1978-elo-theratingofchessplayerspastandpresent.pdf">his publication</a>.<br></p>
 
 <p style="text-align: center;">Decked Out 2 Rating Formula:<br><b>R2 = R1 + (K(S-E))</b></p>
@@ -136,8 +138,8 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         <tr>   
             <td><b>Phase 1:</b></td>
             <td>0.43</td>
-            <td>0.73</td>
-            <td>0.11</td>
+            <td>0.71</td>
+            <td>0.10</td>
             <td>0.18</td>
             <td>0.00</td>
             <td></td>
@@ -145,11 +147,11 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         </tr>
         <tr>   
             <td><b>Phase 2:</b></td>
-            <td>0.75</td>
-            <td>0.87</td>
-            <td>0.33</td>
-            <td>0.25</td>
-            <td>0.00*</td>
+            <td>0.67</td>
+            <td>0.70</td>
+            <td>0.21</td>
+            <td>0.13</td>
+            <td>0.29*</td>
             <td></td>
             <td></td>
         </tr>
@@ -215,7 +217,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         </tr>
         </tbody>
     </table>
-    <p style="font-size: 12px;text-align: center;">*More runs needed to calcualte the probability.</p>
+    <p style="font-size: 12px;text-align: center;">*Currently a bit high due to low runs at head lvl3, but will likely reduce as more people play that difficulty.</p>
 
 <br>
 <div class="spacer"></div>
