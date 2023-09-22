@@ -3,7 +3,33 @@
 var myBarChart;
 // Load the CSV file and create the chart
 
-var randomColors = generateRandomColors(60); // Generate random colors for the line chart datasets
+// var randomColors = generateRandomColors(60); // Generate random colors for the line chart datasets
+
+var randomColors = ["rgb(255, 215, 0)", 
+"rgb(192, 192, 192)", 
+"rgb(205, 127, 50)",
+"#99ccff", // Red
+"#ff99ff", // Green
+"#5733FF", // Blue
+"#FF33A1", // Pink
+"#33A1FF", // Light Blue
+"#FFA133", // Orange
+"#A133FF", // Purple
+"#33FFA1", // Teal
+"#66ff33", // Yellow
+"#D633FF", // Lavender
+"#FF3357", // Coral
+"#33FFD6", // Aqua
+"#FF5733", // Tomato
+"#33FFA1", // Mint
+"#FF33A1", // Raspberry
+"#33A1FF", // Sky Blue
+"#FFA133", // Tangerine
+"#A133FF", // Orchid
+"#33FF57", // Lime
+"#b35900", // Goldenrod
+"#d6d6c2",
+];
 
 var myChart = null; // Declare myChart variable outside the complete function scope
 var myCSV = "modified_data.csv"; // Initial CSV file
@@ -228,7 +254,7 @@ Papa.parse('standings_data.csv', {
             data: barChartData,
             options: {
                 responsive: true,
-                aspectRatio: 5 / 1,
+                aspectRatio: 5 / 1.4,
                 scales: {
                     y: {
                         beginAtZero: false,
@@ -238,7 +264,7 @@ Papa.parse('standings_data.csv', {
                         },
                         title: {
                             display: true,
-                            text: 'Y Axis Label',
+                            text: 'Decked Out 2 Rating',
                             color: 'white',
                         },
                         grid: {
@@ -246,11 +272,6 @@ Papa.parse('standings_data.csv', {
                         }
                     },
                     x: {
-                        title: {
-                            display: true,
-                            text: 'X Axis Label',
-                            color: 'white',
-                        },
                         ticks: {
                             color: 'white',
                         },
@@ -269,6 +290,7 @@ Papa.parse('standings_data.csv', {
                         color: 'white',
                     },
                 },
+                
             },
         });
     }
