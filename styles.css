@@ -1,0 +1,160 @@
+:root {
+    --background: rgb(0, 2, 12);
+    --secondary_background: rgb(24, 27, 51);
+    --highlight: rgb(219,177,59);
+    --secondary_highlight: #2494A2;
+    --text: rgb(241,235,221);
+  }
+
+html {
+    background-color: var(--background);
+}
+
+body {
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    max-width:90%;
+}
+
+.Mycontent {
+    height: 100%;
+    padding: 25px;
+    background-color: var(--secondary_background);
+    margin-top: 25px;
+    border-left:   5px solid var(--highlight);
+    
+}
+
+h1, h2, h3 {
+    color: var(--text);
+    font-family: 'Averia Serif Libre', cursive;
+ }
+ 
+ h1 {
+    font-size: 45px;  
+ }
+
+ p {
+    color:  var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+ }
+
+caption {
+    font-size: 12px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color:  var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    border-collapse: collapse;
+}
+
+a {
+    color: var(--highlight);
+}
+tr:nth-child(even) {
+    background-color: var(--background);
+}
+
+#ratingTable tr:nth-child(1){
+    color: white;
+    font-weight: bold;
+}
+#ratingTable tr:nth-child(2) {
+    color: white;
+    font-weight: bold;
+}
+#ratingTable tr:nth-child(3) {
+    color: white;
+    font-weight: bold;
+    font-weight: bold;
+}
+
+#ratingTable tr:nth-child(1) td:nth-child(1) {
+    background-color: gold;
+    color: black;
+}
+
+#ratingTable tr:nth-child(1):hover {
+    background-color: gold;
+    color: black;
+}
+
+#ratingTable tr:nth-child(2):hover {
+    background-color: silver;
+    color: black;
+}
+
+#ratingTable tr:nth-child(3):hover {
+    background-color: rgb(205, 127, 50);
+    color: black;
+}
+
+#ratingTable tr:nth-child(2) td:nth-child(1) {
+    background-color: silver;
+    color: black;
+    font-weight: bold;
+}
+#ratingTable tr:nth-child(3) td:nth-child(1) {
+    background-color: rgb(205, 127, 50);
+    color: black;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: var(--highlight);
+    color: black;
+    font-weight: bold;
+}
+
+th {
+    border-bottom: 1px solid white;
+    color: white;
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 55px;
+    padding-right: 55px;
+    background-color: var(--secondary_highlight);
+}
+
+#ratingTablex th {
+    cursor: pointer;
+}
+
+td {
+    padding: 5px;
+}
+
+
+.spacer {
+    height: 40px;
+    width: 100%;
+}
+
+.button {
+    background-color: var(--secondary_highlight);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 32px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#button1 {
+    background-color: var(--highlight);
+}
+
+.button:hover {
+    background-color:  var(--highlight);
+}
+

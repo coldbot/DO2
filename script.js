@@ -1,4 +1,43 @@
+function loadCSVForTable1() {
+    fetch('standings_table_data.csv')
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.split('\n');
+            const tableBody = document.querySelector('#ratingTable tbody'); 
 
+            for (let i = 1; i < rows.length; i++) {
+                const columns = rows[i].split(',');
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < columns.length; j++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = columns[j];
+                    
+                    // Check if we are in the second column (index 1)
+                    if (j === 1) {
+                        const numericValue = parseFloat(columns[j]);
+                        
+                        // Set the font color based on the value
+                        if (numericValue > 0) {
+                            cell.style.color = 'rgb(102, 255, 51)';
+                            cell.style.fontWeight = "900";
+                            cell.textContent = '↑' + numericValue.toFixed(0);
+                        } else if (numericValue < 0) {
+                            cell.style.color = 'red';
+                            cell.style.fontWeight = "900";
+                            cell.textContent = '↓' + numericValue*(-1);
+                        }
+                    }
+                    
+                    row.appendChild(cell);
+                }
+
+                tableBody.appendChild(row);
+            }
+        });
+}
+
+window.addEventListener('load', loadCSVForTable1);
 // Add this code to your JavaScript file
 var myBarChart;
 // Load the CSV file and create the chart
@@ -39,25 +78,17 @@ var myCSV = "modified_data.csv"; // Initial CSV file
 document.getElementById("button1").addEventListener("click", function () {
     myCSV = "modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
-    document.getElementById("button1").style.backgroundColor = "rgb(159,197,232)";
-    document.getElementById("button2").style.backgroundColor = "rgb(48,68,150)"; 
-    document.getElementById("button3").style.backgroundColor = "rgb(48,68,150)"; 
 });
 
 document.getElementById("button2").addEventListener("click", function () {
     myCSV = "phase1_modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
-    document.getElementById("button1").style.backgroundColor = "rgb(48,68,150)";
-    document.getElementById("button2").style.backgroundColor = "rgb(159,197,232)"; 
-    document.getElementById("button3").style.backgroundColor = "rgb(48,68,150)"; 
 });
 
 document.getElementById("button3").addEventListener("click", function () {
     myCSV = "phase2_modified_data.csv";
     updateChart(myCSV); // Update the chart when the CSV changes
-    document.getElementById("button1").style.backgroundColor = "rgb(48,68,150)";
-    document.getElementById("button2").style.backgroundColor = "rgb(48,68,150)"; 
-    document.getElementById("button3").style.backgroundColor = "rgb(159,197,232)"; 
+
 });
 
 function updateChart(newCSV) {
@@ -150,10 +181,10 @@ Papa.parse(myCSV, {
                     title: {
                         display: true,
                         text: 'Total Decked Out 2 Runs', // X-axis title
-                        color: 'white',
+                        color: 'rgb(241,235,221)',
                     },
                     ticks: {
-                        color: 'white',
+                        color: 'rgb(241,235,221)',
                     },
                     grid: {
                         color: 'rgba(211, 211, 211, 0)' // Light gray grid lines
@@ -162,11 +193,11 @@ Papa.parse(myCSV, {
                 y: {
                     title: {
                         display: true,
-                        color: 'white',
+                        color: 'rgb(241,235,221)',
                         text: 'Decked Out 2 Rating', // Y-axis title
                     },
                     ticks: {
-                        color: 'white',
+                        color: 'rgb(241,235,221)',
                     },
                     grid: {
                         color: 'rgba(211, 211, 211, 0.1)' // Light gray grid lines
@@ -181,12 +212,12 @@ Papa.parse(myCSV, {
                             mode: 'vertical',
                             scaleID: 'x',
                             value: 241, // X-coordinate where you want to draw the line
-                            borderColor: 'white', // Color of the line
+                            borderColor: 'rgb(241,235,221)', // Color of the line
                             borderWidth: myborder, // Width of the line
                             label: {
                                 content: 'Phase 2', // Label text
                                 enabled: true, // Set to false to hide the label
-                                backgroundColor: 'white',
+                                backgroundColor: 'rgb(241,235,221)',
                                 color: 'black',
                                 yAdjust: 0, // Adjust the label's vertical position
                             },
@@ -195,7 +226,7 @@ Papa.parse(myCSV, {
                 },
                 legend: {
                     labels: {
-                        color: 'white', // Set legend text color to white
+                        color: 'rgb(241,235,221)', // Set legend text color to rgb(241,235,221)
                     },
                 },
             },
@@ -260,12 +291,12 @@ Papa.parse('standings_data.csv', {
                         beginAtZero: false,
                         suggestedMin: suggestedMin,
                         ticks: {
-                            color: 'white',
+                            color: 'rgb(241,235,221)',
                         },
                         title: {
                             display: true,
                             text: 'Decked Out 2 Rating',
-                            color: 'white',
+                            color: 'rgb(241,235,221)',
                         },
                         grid: {
                             color: 'rgba(211, 211, 211, 0.3)' // Light gray grid lines
@@ -273,7 +304,7 @@ Papa.parse('standings_data.csv', {
                     },
                     x: {
                         ticks: {
-                            color: 'white',
+                            color: 'rgb(241,235,221)',
                         },
                         grid: {
                             color: 'rgba(211, 211, 211, 0.3)' // Light gray grid lines
@@ -284,20 +315,12 @@ Papa.parse('standings_data.csv', {
                     legend: {
                         display: false,
                     },
-                    title: {
-                        display: true,
-                        text: 'My Bar Chart',
-                        color: 'white',
-                    },
                 },
                 
             },
         });
     }
 });
-
-
-
 
 // Function to generate random colors
 function generateRandomColors(count) {

@@ -1,147 +1,14 @@
 <!DOCTYPE html>
 <head>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:wght@700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <style>
-        html {
-            background-color: black;
-        }
-
-        body {
-            display:block;
-            margin-left:auto;
-            margin-right:auto;
-            max-width:90%;
-        }
-
-        .Mycontent {
-            height: 100%;
-            padding: 25px;
-            background-color: rgb(19,22,35);;
-            margin-top: 25px;
-            border-left:   5px solid rgb(48,68,150);
-            
-        }
-
-        h1, h2, h3 {
-            color: rgb(255, 255, 255);
-            font-family: 'Averia Serif Libre', cursive;
-         }
-         
-         h1 {
-            font-size: 45px;  
-         }
-
-         p {
-            color: rgb(255, 255, 255);
-            font-family: 'IBM Plex Sans', sans-serif;
-            line-height: 1.7;
-         }
-        
-        caption {
-            font-size: 12px;
-        }
-
-        table {
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            color: rgb(255, 255, 255);
-            font-family: 'IBM Plex Sans', sans-serif;
-            border-collapse: collapse;
-        }
-        
-        a {
-            color: rgb(102, 217, 255);
-        }
-        tr:nth-child(even) {
-            background-color: rgb(48,68,150);
-        }
-
-        #ratingTable tr:nth-child(1){
-            color: white;
-            font-weight: bold;
-        }
-        #ratingTable tr:nth-child(2) {
-            color: white;
-            font-weight: bold;
-        }
-        #ratingTable tr:nth-child(3) {
-            color: white;
-            font-weight: bold;
-            font-weight: bold;
-        }
-
-        #ratingTable tr:nth-child(1) td:nth-child(1) {
-            background-color: gold;
-            color: black;
-        }
-        #ratingTable tr:nth-child(2) td:nth-child(1) {
-            background-color: silver;
-            color: black;
-            font-weight: bold;
-        }
-        #ratingTable tr:nth-child(3) td:nth-child(1) {
-            background-color: rgb(205, 127, 50);
-            color: black;
-            font-weight: bold;
-        }
-
-        tr:hover {
-            background-color: rgb(159,197,232);
-        }
-        th {
-            border-bottom: 1px solid white;
-            color: white;
-            font-size: 20px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            padding-left: 15px;
-            padding-right: 15px;
-            background-color: rgb(48,68,150);
-        }
-
-        #ratingTablex th {
-            cursor: pointer;
-        }
-
-        td {
-            padding: 5px;
-        }
-
-    
-        .spacer {
-            height: 40px;
-            width: 100%;
-        }
-
-        .button {
-            background-color: rgb(48,68,150);
-            color: white;
-            font-weight: 700;
-            font-size: 16px;
-            padding: 10px 32px;
-            border-radius: 5px;
-            border: 0;
-            font-family: 'IBM Plex Sans', sans-serif;
-            cursor: pointer;
-            margin-left: 5px;
-        }
-
-        #button1 {
-            background-color: rgb(159,197,232);
-        }
-
-        .button:hover {
-            background-color: rgb(159,197,232);
-            color: white;
-        }
-    </style>
 </head>
+
 <body>
 <div class="spacer"></div>
 <div class="Mycontent">
@@ -151,11 +18,28 @@
 This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for wins &#128081; , 
 or subtracted points if they fail &#128128; in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
 </div>
+
 <div class="Mycontent">
-<h2>Highest to Lowest Rated Players</h2>
-<canvas id="barChart"></canvas>
-<p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
+<h2>Player Rating Scoreboard</h2>
+
+<p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases.<br>↑↓ represents change in placement (#) from previous phase to current phase.</p>
+<table id="ratingTable">
+    <thead>
+        <tr>
+            <th id="rating">#</th>
+            <th id="Rchange">↑↓</th>
+            <th id="hermit">Hermit</th>
+            <th id="phase1">Phase 2</th>
+            <th id="phase2">Phase 1</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
 </div>
+
+
 <div class="Mycontent">
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
 <button id="toggle" class="button">Show/hide data</button> 
@@ -168,84 +52,38 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 
     document.getElementById("button1").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / All Phases";
+        document.getElementById("button1").style.backgroundColor = "var(--highlight)";
+        document.getElementById("button2").style.backgroundColor = "var(--secondary_highlight)";
+        document.getElementById("button3").style.backgroundColor = "var(--secondary_highlight)";
     });
 
     document.getElementById("button2").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / Phase 1";
+        document.getElementById("button1").style.backgroundColor = "var(--secondary_highlight)";
+        document.getElementById("button2").style.backgroundColor = "var(--highlight)";
+        document.getElementById("button3").style.backgroundColor = "var(--secondary_highlight)";
     });
 
     document.getElementById("button3").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / Phase 2";
+        document.getElementById("button1").style.backgroundColor = "var(--secondary_highlight)";
+        document.getElementById("button3").style.backgroundColor = "var(--highlight)";
+        document.getElementById("button2").style.backgroundColor = "var(--secondary_highlight)";
     });
 
 </script>
 <canvas id="myChart"></canvas>
 <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
 </div>
+
+
 <div class="Mycontent">
-    <h2>Standings - Table</h2>
-    <p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases. ↑↓ represents change in placement (#) from previous phase to current phase.</p>
-    <table id="ratingTable">
-        <thead>
-            <tr>
-                <th id="rating">#</th>
-                <th id="Rchange">↑↓</th>
-                <th id="hermit">Hermit</th>
-                <th id="phase1">Phase 2</th>
-                <th id="phase2">Phase 1</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-
-    <script>
-        function loadCSVForTable1() {
-            fetch('standings_table_data.csv')
-                .then(response => response.text())
-                .then(data => {
-                    const rows = data.split('\n');
-                    const tableBody = document.querySelector('#ratingTable tbody'); 
-    
-                    for (let i = 1; i < rows.length; i++) {
-                        const columns = rows[i].split(',');
-                        const row = document.createElement('tr');
-    
-                        for (let j = 0; j < columns.length; j++) {
-                            const cell = document.createElement('td');
-                            cell.textContent = columns[j];
-                            
-                            // Check if we are in the second column (index 1)
-                            if (j === 1) {
-                                const numericValue = parseFloat(columns[j]);
-                                
-                                // Set the font color based on the value
-                                if (numericValue > 0) {
-                                    cell.style.color = 'rgb(102, 255, 51)';
-                                    cell.style.fontWeight = "900";
-                                    cell.textContent = '↑' + numericValue.toFixed(0);
-                                } else if (numericValue < 0) {
-                                    cell.style.color = 'red';
-                                    cell.style.fontWeight = "900";
-                                    cell.textContent = '↓' + numericValue*(-1);
-                                }
-                            }
-                            
-                            row.appendChild(cell);
-                        }
-    
-                        tableBody.appendChild(row);
-                    }
-                });
-        }
-    
-        window.addEventListener('load', loadCSVForTable1);
-    </script>
-    
-
-
+    <h2>Barplot / Highest to Lowest Rated Players</h2>
+    <canvas id="barChart"></canvas>
+    <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
 </div>
+
+
 <div class="Mycontent">
 <h2 id="how_ratings_are_calculated">How ratings are calculated</h2>
 <p>The rating system is based formula 2 by Arpad Elo found in <a href="https://gwern.net/doc/statistics/order/comparison/1978-elo-theratingofchessplayerspastandpresent.pdf">his publication</a>.<br></p>
@@ -260,7 +98,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 </p>
 <div class="spacer"></div>
     <table id="difficulty_factor_table">
-        <caption>Table 2. Difficulty Factors (<b>E</b>) used as of 9/21/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location.</caption>
+        <p style="font-size: 12px;text-align: center;">Table 2. Difficulty Factors (<b>E</b>) used as of 9/21/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location.</p>
         <thead>
         <tr>
             <th></th>
@@ -357,7 +195,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         </tr>
         </tbody>
     </table>
-    <p style="font-size: 12px;text-align: center;">*Currently a bit high due to low runs at head lvl3, but will likely reduce as more people play that difficulty.</p>
+    <p style="font-size: 12px;text-align: center;">*Currently a bit high due to low runs at hard lvl3, but will likely reduce as more people play that difficulty.</p>
 
 <br>
 <div class="spacer"></div>
