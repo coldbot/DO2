@@ -184,7 +184,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 </div>
 <div class="Mycontent">
     <h2>Standings - Table</h2>
-    <p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases. ↑↓ represents change in rating from previous phase to current phase.</p>
+    <p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases. ↑↓ represents change in placement (#) from previous phase to current phase.</p>
     <table id="ratingTable">
         <thead>
             <tr>
@@ -224,10 +224,11 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
                                 if (numericValue > 0) {
                                     cell.style.color = 'rgb(102, 255, 51)';
                                     cell.style.fontWeight = "900";
-                                    cell.textContent = '+' + numericValue.toFixed(2);
+                                    cell.textContent = '↑' + numericValue.toFixed(0);
                                 } else if (numericValue < 0) {
                                     cell.style.color = 'red';
                                     cell.style.fontWeight = "900";
+                                    cell.textContent = '↓' + numericValue*(-1);
                                 }
                             }
                             
