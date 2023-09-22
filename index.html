@@ -42,35 +42,47 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 
 <div class="Mycontent">
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
-<button id="toggle" class="button">Show/hide data</button> 
-<button id="button1" class="button">All phases</button> 
-<button id="button2" class="button">Phase 1</button> 
-<button id="button3" class="button">Phase 2</button> 
+
+<div class="graph_menu" style="text-align:center">
+    <button id="toggle" class="buttonToggle">Show/hide data</button> 
+    <button id="button1" class="button selected">All phases</button> 
+    <button id="button2" class="button">Phase 1</button> 
+    <button id="button3" class="button">Phase 2</button> 
+</div>
+
 <br><br>
+
 <script>
     const timelineHeading = document.getElementById("timelineheading");
 
     document.getElementById("button1").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / All Phases";
-        document.getElementById("button1").style.backgroundColor = "var(--highlight)";
-        document.getElementById("button2").style.backgroundColor = "var(--secondary_highlight)";
-        document.getElementById("button3").style.backgroundColor = "var(--secondary_highlight)";
     });
 
     document.getElementById("button2").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / Phase 1";
-        document.getElementById("button1").style.backgroundColor = "var(--secondary_highlight)";
-        document.getElementById("button2").style.backgroundColor = "var(--highlight)";
-        document.getElementById("button3").style.backgroundColor = "var(--secondary_highlight)";
     });
 
     document.getElementById("button3").addEventListener("click", function () {
         timelineHeading.textContent = "Timeline of Rating Progression / Phase 2";
-        document.getElementById("button1").style.backgroundColor = "var(--secondary_highlight)";
-        document.getElementById("button3").style.backgroundColor = "var(--highlight)";
-        document.getElementById("button2").style.backgroundColor = "var(--secondary_highlight)";
     });
 
+    var button = document.getElementsByClassName("button");
+	
+    var addSelectClass = function(){
+        removeSelectClass();
+        this.classList.add('selected');	
+    }
+
+    var removeSelectClass = function(){
+        for (var i =0; i < button.length; i++) {
+            button[i].classList.remove('selected')
+        }
+    }
+    
+    for (var i =0; i < button.length; i++) {
+        button[i].addEventListener("click",addSelectClass);
+    }
 </script>
 <canvas id="myChart"></canvas>
 <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>

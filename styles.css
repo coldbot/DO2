@@ -137,8 +137,9 @@ td {
     width: 100%;
 }
 
-.button {
+.buttonToggle {
     background-color: var(--secondary_highlight);
+    -webkit-transition: all 0.3s ease;   transition: all 0.3s ease;
     color: var(--text);
     font-weight: 700;
     font-size: 16px;
@@ -150,11 +151,30 @@ td {
     margin-left: 5px;
 }
 
-#button1 {
-    background-color: var(--highlight);
+.buttonToggle:hover {
+    background-color:  var(--highlight);
+}
+
+.button {
+    background-color: var(--secondary_highlight);
+    -webkit-transition: all 0.3s ease;   transition: all 0.3s ease;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px 32px;
+    border-radius: 5px;
+    border: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+    margin-left: 5px;
 }
 
 .button:hover {
     background-color:  var(--highlight);
 }
 
+.button.selected{
+    background-color: var(--highlight);
+    color: #000
+  }
+  
