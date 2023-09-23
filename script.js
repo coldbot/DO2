@@ -1,9 +1,37 @@
+const nameImageHash = {
+    "BdoubleO100": "https://static.wikia.nocookie.net/hermitcraft/images/5/55/BdoubleO100-face.png",
+    "Cubfan135": "https://static.wikia.nocookie.net/hermitcraft/images/7/7e/Cubfan135-face.png",
+    "Docm77": "https://static.wikia.nocookie.net/hermitcraft/images/6/66/Docm77-face.png",
+    "Ethoslab": "https://static.wikia.nocookie.net/hermitcraft/images/2/25/EthosLab-face.png",
+    "Geminitay": "https://static.wikia.nocookie.net/hermitcraft/images/2/2d/GeminiTay-face.png",
+    "Scar": "https://static.wikia.nocookie.net/hermitcraft/images/7/7f/GoodTimesWithScar-face.png",
+    "Grian": "https://static.wikia.nocookie.net/hermitcraft/images/b/bb/Grian-face.png",
+    "Hypnotizd": "https://static.wikia.nocookie.net/hermitcraft/images/d/d5/Hypnotizd-face.png",
+    "iJevin": "https://static.wikia.nocookie.net/hermitcraft/images/b/bc/IJevin-face.png",
+    "impulseSV": "https://static.wikia.nocookie.net/hermitcraft/images/e/e6/ImpulseSV-face.png",
+    "iskall85": "https://static.wikia.nocookie.net/hermitcraft/images/d/db/Iskall85-face.png",
+    "JoeHills": "https://static.wikia.nocookie.net/hermitcraft/images/4/4d/JoeHills-face.png",
+    "Keralis": "https://static.wikia.nocookie.net/hermitcraft/images/8/80/Keralis-face.png",
+    "Pearl": "https://static.wikia.nocookie.net/hermitcraft/images/f/f2/PearlescentMoon-face.png",
+    "RenDog": "https://static.wikia.nocookie.net/hermitcraft/images/3/3e/Rendog-face.png",
+    "Stress": "https://static.wikia.nocookie.net/hermitcraft/images/1/1f/StressMonster101-face.png",
+    "VintageBeef": "https://static.wikia.nocookie.net/hermitcraft/images/f/fb/VintageBeef-face.png",
+    "Xisuma": "https://static.wikia.nocookie.net/hermitcraft/images/6/67/Xisumavoid-face.png",
+    "Zedaph": "https://static.wikia.nocookie.net/hermitcraft/images/c/c8/Zedaph-face.png",
+    "ZombieCleo": "https://static.wikia.nocookie.net/hermitcraft/images/9/90/ZombieCleo-face.png",
+    "FalseSymmetry": "https://static.wikia.nocookie.net/hermitcraft/images/c/c0/FalseSymmetry-face.png",
+    "MumboJumbo": "https://static.wikia.nocookie.net/hermitcraft/images/1/15/MumboJumbo-face.png",
+    "TangoTek": "https://static.wikia.nocookie.net/hermitcraft/images/7/71/TangoTek-face.png",
+    "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png"
+};
+
+
 function loadCSVForTable1() {
     fetch('standings_table_data.csv')
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n');
-            const tableBody = document.querySelector('#ratingTable tbody'); 
+            const tableBody = document.querySelector('#ratingTable tbody');
 
             for (let i = 1; i < rows.length; i++) {
                 const columns = rows[i].split(',');
@@ -11,13 +39,10 @@ function loadCSVForTable1() {
 
                 for (let j = 0; j < columns.length; j++) {
                     const cell = document.createElement('td');
-                    cell.textContent = columns[j];
-                    
-                    // Check if we are in the second column (index 1)
+
                     if (j === 1) {
                         const numericValue = parseFloat(columns[j]);
                         
-                        // Set the font color based on the value
                         if (numericValue > 0) {
                             cell.style.color = 'rgb(102, 255, 51)';
                             cell.style.fontWeight = "900";
@@ -26,9 +51,27 @@ function loadCSVForTable1() {
                             cell.style.color = 'red';
                             cell.style.fontWeight = "900";
                             cell.textContent = '↓' + numericValue*(-1);
+                        } else if (numericValue == 0) {
+                            cell.textContent = "";
                         }
+
+
+                    } else if (j === 2) {
+                        const name = columns[j];
+                        if (nameImageHash.hasOwnProperty(name)) {
+                            const img = document.createElement('img');
+                            img.src = nameImageHash[name];
+                            img.alt = name; 
+                            img.style.width = '20px'; 
+                            img.style.height = '20px'; 
+                            cell.appendChild(img);
+                            cell.appendChild(document.createTextNode(" "));
+                        }
+                        cell.appendChild(document.createTextNode(name));
+                    } else {
+                        cell.textContent = columns[j];
                     }
-                    
+
                     row.appendChild(cell);
                 }
 
@@ -38,12 +81,9 @@ function loadCSVForTable1() {
 }
 
 window.addEventListener('load', loadCSVForTable1);
-// Add this code to your JavaScript file
+
+
 var myBarChart;
-// Load the CSV file and create the chart
-
-// var randomColors = generateRandomColors(60); // Generate random colors for the line chart datasets
-
 var randomColors = ["rgb(255, 215, 0)", 
 "rgb(192, 192, 192)", 
 "rgb(205, 127, 50)",
@@ -70,9 +110,8 @@ var randomColors = ["rgb(255, 215, 0)",
 "#d6d6c2",
 ];
 
-var myChart = null; // Declare myChart variable outside the complete function scope
-var myCSV = "modified_data.csv"; // Initial CSV file
-
+var myChart = null; 
+var myCSV = "modified_data.csv";
 
 // Function to change the CSV file when Button is clicked
 document.getElementById("button1").addEventListener("click", function () {

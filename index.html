@@ -12,11 +12,11 @@
 <body>
 <div class="spacer"></div>
 <div class="Mycontent">
-<h1>Decked Out 2 - Player Ratings</h1>
-<p><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
+<h1>Decked Out 2 / Player Performance Ratings</h1>
+<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
     as part of his main base. <br>
 This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for wins &#128081; , 
-or subtracted points if they fail &#128128; in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon. The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
+or subtracted points if they fail &#128128; in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon.<br>The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
 </div>
 
 <div class="Mycontent">
@@ -110,7 +110,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 </p>
 <div class="spacer"></div>
     <table id="difficulty_factor_table">
-        <p style="font-size: 12px;text-align: center;">Table 2. Difficulty Factors (<b>E</b>) used as of 9/21/2023. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location.</p>
+        <p style="font-size: 12px;text-align: center;">Table 2. Difficulty Factors (<b>E</b>) used. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Easy and Medium LvL 1 is combined, to avoid "noob bias"*.</p>
         <thead>
         <tr>
             <th></th>
@@ -138,7 +138,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
             <td>0.68</td>
             <td>0.35</td>
             <td>0.12</td>
-            <td>0.29*</td>
+            <td>0.29**</td>
             <td></td>
             <td></td>
         </tr>
@@ -198,7 +198,9 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
         </tr>
         </tbody>
     </table>
-    <p style="font-size: 12px;text-align: center;">*Currently a bit high due to low runs at hard lvl3, but will likely reduce as more people play that difficulty.</p>
+    <p style="font-size: 12px;text-align: center;">*The "noob bias" (tm) is the fact that when a Hermit first runs Decked Out 2, their skill level is at the lowest, they dont know how the game works, and they will be running Easy Lvl 1.<br>
+        This resulted in a Easy Lvl 1 difficulty estimate <b>E</b> that implied that Easy Lvl 1  
+        is twice as hard as Medium lvl 1!<br>Even though from a gameplay perspective, they should be fairly similar. For now, lvl 2 and up are still split, as once a Hermit goes there,<br>they should know how the game works and be out of that early noob phase.<br>**Currently a bit high due to low runs at hard lvl3, but will likely reduce as more people play that difficulty.</p>
 
 <br>
 <div class="spacer"></div>
