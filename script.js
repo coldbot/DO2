@@ -100,10 +100,10 @@ var randomColors = ["rgb(255, 215, 0)",
 "#FF3357", // Coral
 "#33FFD6", // Aqua
 "#FF5733", // Tomato
-"#33FFA1", // Mint
+"#870000", // Mint
 "#FF33A1", // Raspberry
 "#33A1FF", // Sky Blue
-"#FFA133", // Tangerine
+"#fff", // Tangerine
 "#A133FF", // Orchid
 "#33FF57", // Lime
 "#b35900", // Goldenrod
