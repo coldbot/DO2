@@ -19,11 +19,11 @@ body {
 
 .Mycontent {
     height: 100%;
+    overflow: auto;
     padding: 25px;
     background-color: var(--secondary_background);
     margin-top: 25px;
     border-left:   5px solid var(--highlight);
-    
 }
 
 h1, h2, h3 {
