@@ -87,27 +87,29 @@ var myBarChart;
 var randomColors = ["rgb(255, 215, 0)", 
 "rgb(192, 192, 192)", 
 "rgb(205, 127, 50)",
-"#99ccff", // Red
-"#ff99ff", // Green
-"#5733FF", // Blue
-"#FF33A1", // Pink
-"#33A1FF", // Light Blue
-"#FFA133", // Orange
-"#A133FF", // Purple
-"#33FFA1", // Teal
-"#66ff33", // Yellow
-"#D633FF", // Lavender
-"#FF3357", // Coral
-"#33FFD6", // Aqua
-"#FF5733", // Tomato
-"#870000", // Mint
-"#FF33A1", // Raspberry
-"#33A1FF", // Sky Blue
-"#fff", // Tangerine
-"#A133FF", // Orchid
-"#33FF57", // Lime
-"#b35900", // Goldenrod
-"#d6d6c2",
+"#2f4f4f", // Red
+"#556b2f", // Green
+"#483d8b",
+"#008000",
+"#9acd32",
+"#00008b",
+"#ff4500",
+"#ffa500",
+"#ffff00",
+"#7cfc00",
+"#00ff7f",
+"#dc143c",
+"#00ffff",
+"#00bfff",
+"#0000ff",
+"#ff00ff",
+"#1e90ff",
+"#db7093",
+"#f0e68c",
+"#ff1493",
+"#ffa07a",
+"#ee82ee",
+"white",
 ];
 
 var myChart = null; 
@@ -379,3 +381,186 @@ document.getElementById('toggle').addEventListener('click', function () {
     });
     myChart.update(); // Update the chart to reflect the changes
 });
+
+
+
+//// GET DATA FROM GOOGLE SHEETS
+
+const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml';
+    
+let printRows = false; // Flag to indicate whether to print rows
+fetch(googleSheetURL)
+    .then(response => response.text())
+    .then(data => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+
+        // Get the table rows (skip the header row)
+        const rows = doc.querySelectorAll('table tbody tr');
+        const tableBody = document.querySelector('#data-table-runs tbody');
+
+        // Loop through the rows and extract and display the data
+        rows.forEach(row => {
+            const columns = row.querySelectorAll('td');
+            
+            // Check if there are at least 3 columns (skip the first two columns)
+            if (columns.length < 3) {
+                return; // Skip this row
+            }
+
+            const rowData = Array.from(columns).map(column => column.textContent);
+
+            if (rowData[1].startsWith('Deaths')) {
+                printRows = false; // Stop printing rows
+            }
+
+            // Check if the third cell starts with "Group"
+            if (rowData[0].startsWith('Group')) {
+                printRows = true; // Start printing rows
+            }
+
+            if (printRows) {
+                // Create a new row in the HTML table
+                const newRow = document.createElement('tr');
+                
+                // Only add columns starting from the third column
+                for (let i = 2; i < rowData.length; i++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = rowData[i];
+                    newRow.appendChild(cell);
+                }
+
+                tableBody.appendChild(newRow);
+            }
+        });
+
+        removeUnwantedColumns();
+        deleteFirstRow();
+        removeRowsWithoutAlphabeticalCharacters();
+        showLast10Rows();
+        insertImagesInTable();
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+
+        // Function to remove unwanted columns
+function removeUnwantedColumns() {
+    const table = document.getElementById("data-table-runs");
+    if (table) {
+        const rows = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            // Define an array of column indices you want to remove
+            const columnsToRemove = [2, 3, 4, 5, 6, 7,9,10,14,15,17,18,20,21, 22, 23,24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
+
+            for (let j = columnsToRemove.length - 1; j >= 0; j--) {
+                const columnIndex = columnsToRemove[j];
+                if (columnIndex < cells.length) {
+                    cells[columnIndex].remove();
+                }
+            }
+        }
+    }
+}
+
+        function removeRowsWithoutAlphabeticalCharacters() {
+    const table = document.getElementById("data-table-runs");
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = rows.length - 1; i > 0; i--) { // Start from i = rows.length - 1 and skip the first row (i = 0)
+        const row = rows[i];
+        const cells = row.getElementsByTagName('td');
+        let hasAlphabeticalCharacter = false;
+
+        for (let j = 0; j < cells.length; j++) {
+            const cellText = cells[j].textContent.trim();
+            if (/[a-zA-Z]/.test(cellText)) {
+                hasAlphabeticalCharacter = true;
+                break;
+            }
+        }
+
+        if (!hasAlphabeticalCharacter) {
+            table.deleteRow(i);
+        }
+    }
+}
+
+    function deleteFirstRow() {
+        // Get a reference to the table by its id
+        var table = document.getElementById('data-table-runs');
+
+        // Check if the table exists
+        if (table) {
+            // Check if the table has any rows
+            if (table.rows.length > 0) {
+            // Delete the first row
+            table.deleteRow(1);
+            table.deleteRow(2);
+            } else {
+            console.log('Table is empty, no rows to delete.');
+            }
+        } else {
+            console.log('Table not found.');
+        }
+    }
+
+    function showLast10Rows() {
+        const table = document.getElementById("data-table-runs");
+        const rows = table.getElementsByTagName('tr');
+        const numRows = rows.length;
+
+        // Hide all rows initially
+        for (let i = 1; i < numRows; i++) { // Start from 1 to skip the header row
+            rows[i].style.display = 'none';
+        }
+
+        // Show the last 10 rows (including the header row)
+        for (let i = Math.max(0, numRows - 10); i < numRows; i++) {
+            rows[i].style.display = '';
+        }
+     }
+
+     function insertImagesInTable() {
+        const table = document.getElementById("data-table-runs");
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) { // Start from 1 to skip the header row
+            const row = rows[i];
+            const cells = row.getElementsByTagName('td');
+            let nameFound = false;
+
+            for (let j = 0; j < cells.length; j++) {
+                const cellText = cells[j].textContent.trim();
+                if (nameImageHash.hasOwnProperty(cellText)) {
+                    const name = cellText;
+                    const imageSrc = nameImageHash[name];
+                    const image = document.createElement("img");
+                    image.src = imageSrc;
+                    image.width = 20;
+                    image.height = 20;
+
+                    // Create a space element
+                    const space = document.createTextNode(" ");
+
+                    // Clear the content of the cell
+                    cells[j].innerHTML = '';
+
+                    // Append the image, space, and name to the cell
+                    cells[j].appendChild(image);
+                    cells[j].appendChild(space);
+                    cells[j].appendChild(document.createTextNode(name));
+
+                    nameFound = true; // Set the flag to break out of the loop
+                    break;
+                }
+            }
+
+            if (!nameFound) {
+                // Handle the case where the name is not found in any cell
+            }
+        }
+    }

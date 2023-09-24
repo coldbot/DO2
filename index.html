@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Decked Out 2 - Ratings</title>
 </head>
 
 <body>
@@ -22,7 +23,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 <div class="Mycontent">
 <h2>Player Rating Scoreboard</h2>
 
-<p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases.<br>↑↓ represents change in placement (#) from previous phase to current phase.</p>
+<p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases.<br>Standings will change as more runs become public.<br>↑↓ represents change in placement (#) from previous phase to current phase.</p>
 <table id="ratingTable">
     <thead>
         <tr>
@@ -38,7 +39,25 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 </table>
 
 </div>
-
+<div class="Mycontent">
+    <h2>10 Most Recent Runs</h2>
+    <table id="data-table-runs">
+        <thead>
+            <th>Run No.</th>
+            <th>Hermit</th>
+            <th>Difficulty</th>
+            <th>Artifact</th>
+            <th>Death Cause</th>
+            <th>Success / Fail</th>
+            <th>Total Crowns</th>
+            <th>Total Embers</th>
+        </thead>
+        <tbody>
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+    <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
+</div>
 
 <div class="Mycontent">
 <h2 id = "timelineheading">Timeline of Rating Progression / All Phases</h2>
