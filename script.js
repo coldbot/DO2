@@ -439,6 +439,7 @@ fetch(googleSheetURL)
         removeRowsWithoutAlphabeticalCharacters();
         showLast10Rows();
         insertImagesInTable();
+        reverseTableRows();
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -563,4 +564,38 @@ function removeUnwantedColumns() {
                 // Handle the case where the name is not found in any cell
             }
         }
+    }
+
+    var reversed = false;
+    function reverseTableRows() {
+        var table = document.getElementById("data-table-runs");
+        var tbody = table.getElementsByTagName("tbody")[0];
+        var rows = tbody.getElementsByTagName("tr");
+        
+        var numRows = rows.length;
+        var reversedRows = [];
+        
+        // Copy rows in reverse order if not already reversed, or restore original order
+        if (!reversed) {
+            for (var i = numRows - 1; i >= 0; i--) {
+                reversedRows.push(rows[i]);
+            }
+        } else {
+            for (var i = 0; i < numRows; i++) {
+                reversedRows.push(rows[i]);
+            }
+        }
+        
+        // Remove existing rows
+        while (tbody.firstChild) {
+            tbody.removeChild(tbody.firstChild);
+        }
+        
+        // Append reversed rows
+        for (var i = 0; i < reversedRows.length; i++) {
+            tbody.appendChild(reversedRows[i]);
+        }
+
+        // Toggle the reversed flag
+        reversed = !reversed;
     }
