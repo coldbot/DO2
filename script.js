@@ -25,7 +25,7 @@ const nameImageHash = {
     "MumboJumbo": "https://static.wikia.nocookie.net/hermitcraft/images/1/15/MumboJumbo-face.png",
     "TangoTek": "https://static.wikia.nocookie.net/hermitcraft/images/7/71/TangoTek-face.png",
     "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
-    "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
+    "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png"
 };
 
 
@@ -458,7 +458,7 @@ function removeUnwantedColumns() {
         for (let i = 0; i < rows.length; i++) {
             const cells = rows[i].getElementsByTagName("td");
             // Define an array of column indices you want to remove
-            const columnsToRemove = [2, 3, 4, 5, 6, 7,9,10,14,15,17,18,20, 22, 23,24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
+            const columnsToRemove = [2, 3, 4, 5, 6, 7,10,14,15,17,18,20, 22, 23,24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
 
             for (let j = columnsToRemove.length - 1; j >= 0; j--) {
                 const columnIndex = columnsToRemove[j];
