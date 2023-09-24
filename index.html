@@ -41,25 +41,26 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 
 </div>
 <div class="Mycontent">
-    <h2>10 Most Recent Runs</h2>
-    <table id="data-table-runs">
-        <thead>
-            <th>Run No.</th>
-            <th>Hermit</th>
-            <th>Difficulty</th>
-            <th>Artifact Level</th>
-            <th>Artifact Found</th>
-            <th>Death Cause</th>
-            <th>Success / Fail</th>
-            <th>Total Crowns</th>
-            <th>Total Embers</th>
-            <th>Phase</th>
-        </thead>
-        <tbody>
-            <!-- Data will be inserted here -->
-        </tbody>
-    </table>
-    <p style="text-align: center;"><a href="https://coldbot.github.io/DO2/runs">View more</a></p>
+    <h2>Recent Runs</h2>
+    <div style="max-height: 500px;overflow-y: scroll;overflow-x: auto;">
+        <table id="data-table-runs" style="width: 100%">
+            <thead>
+                <th>Run No.</th>
+                <th>Hermit</th>
+                <th>Difficulty</th>
+                <th>Artifact Level</th>
+                <th>Artifact Found</th>
+                <th>Death Cause</th>
+                <th>Success / Fail</th>
+                <th><img src="https://static.wikia.nocookie.net/hermitcraft/images/1/16/Decked-Out-2-Crown.png" width="30"></th>
+                <th><img src="https://static.wikia.nocookie.net/hermitcraft/images/7/73/Decked-Out-2-Frost-Ember.png" width="25"></th>
+                <th>Phase</th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <p style="text-align: center;"><a href="https://coldbot.github.io/DO2/runs">Full view</a></p>
     <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
 </div>
 
@@ -236,4 +237,5 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 <script src="script.js"></script>
+<script src="recentruns.js"></script>
 </sub>
