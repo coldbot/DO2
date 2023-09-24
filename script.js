@@ -4,6 +4,7 @@ const nameImageHash = {
     "Docm77": "https://static.wikia.nocookie.net/hermitcraft/images/6/66/Docm77-face.png",
     "Ethoslab": "https://static.wikia.nocookie.net/hermitcraft/images/2/25/EthosLab-face.png",
     "Geminitay": "https://static.wikia.nocookie.net/hermitcraft/images/2/2d/GeminiTay-face.png",
+    "GeminiTay": "https://static.wikia.nocookie.net/hermitcraft/images/2/2d/GeminiTay-face.png",
     "Scar": "https://static.wikia.nocookie.net/hermitcraft/images/7/7f/GoodTimesWithScar-face.png",
     "Grian": "https://static.wikia.nocookie.net/hermitcraft/images/b/bb/Grian-face.png",
     "Hypnotizd": "https://static.wikia.nocookie.net/hermitcraft/images/d/d5/Hypnotizd-face.png",
@@ -14,6 +15,7 @@ const nameImageHash = {
     "Keralis": "https://static.wikia.nocookie.net/hermitcraft/images/8/80/Keralis-face.png",
     "Pearl": "https://static.wikia.nocookie.net/hermitcraft/images/f/f2/PearlescentMoon-face.png",
     "RenDog": "https://static.wikia.nocookie.net/hermitcraft/images/3/3e/Rendog-face.png",
+    "Rendog": "https://static.wikia.nocookie.net/hermitcraft/images/3/3e/Rendog-face.png",
     "Stress": "https://static.wikia.nocookie.net/hermitcraft/images/1/1f/StressMonster101-face.png",
     "VintageBeef": "https://static.wikia.nocookie.net/hermitcraft/images/f/fb/VintageBeef-face.png",
     "Xisuma": "https://static.wikia.nocookie.net/hermitcraft/images/6/67/Xisumavoid-face.png",
@@ -22,7 +24,8 @@ const nameImageHash = {
     "FalseSymmetry": "https://static.wikia.nocookie.net/hermitcraft/images/c/c0/FalseSymmetry-face.png",
     "MumboJumbo": "https://static.wikia.nocookie.net/hermitcraft/images/1/15/MumboJumbo-face.png",
     "TangoTek": "https://static.wikia.nocookie.net/hermitcraft/images/7/71/TangoTek-face.png",
-    "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png"
+    "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
+    "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
 };
 
 
