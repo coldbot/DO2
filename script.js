@@ -25,7 +25,8 @@ const nameImageHash = {
     "MumboJumbo": "https://static.wikia.nocookie.net/hermitcraft/images/1/15/MumboJumbo-face.png",
     "TangoTek": "https://static.wikia.nocookie.net/hermitcraft/images/7/71/TangoTek-face.png",
     "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
-    "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png"
+    "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
+    "Welsknight":"https://static.wikia.nocookie.net/hermitcraft/images/4/40/Welsknight-face.svg"
 };
 
 
