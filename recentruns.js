@@ -1,9 +1,4 @@
-//// GET DATA FROM GOOGLE SHEETS
-
-
-const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml';
-    
-let printRows = false; // Flag to indicate whether to print rows
+let printRows2 = false; // Flag to indicate whether to print rows
 fetch(googleSheetURL)
     .then(response => response.text())
     .then(data => {
@@ -26,15 +21,15 @@ fetch(googleSheetURL)
             const rowData = Array.from(columns).map(column => column.textContent);
 
             if (rowData[1].startsWith('Deaths')) {
-                printRows = false; // Stop printing rows
+                printRows2 = false; // Stop printing rows
             }
 
             // Check if the third cell starts with "Group"
             if (rowData[0].startsWith('Group')) {
-                printRows = true; // Start printing rows
+                printRows2 = true; // Start printing rows
             }
 
-            if (printRows) {
+            if (printRows2) {
                 // Create a new row in the HTML table
                 const newRow = document.createElement('tr');
                 
@@ -65,6 +60,7 @@ fetch(googleSheetURL)
         reverseTableRows();
         //colorColumn34Yellow();
         //updateRatingChange();
+        removeColumnsAfterTen();
     })
     .catch(error => {
         console.error('Error fetching data:', error);
@@ -261,3 +257,25 @@ for (var i = 1; i < table.rows.length; i++) {
 }
 }
 }
+
+function removeColumnsAfterTen() {
+    // Get a reference to the table
+    var table = document.getElementById("data-table-runs");
+  
+    // Check if the table exists
+    if (table) {
+      // Loop through each row in the table
+      for (var i = 0; i < table.rows.length; i++) {
+        var row = table.rows[i];
+  
+        // Check if there are at least 5 cells in the row
+        if (row.cells.length >= 5) {
+          // Remove columns starting from the fifth column (index 4)
+          for (var j = row.cells.length - 1; j >= 10; j--) {
+            row.deleteCell(j);
+          }
+        }
+      }
+    }
+  }
+  

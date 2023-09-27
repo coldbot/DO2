@@ -1,5 +1,39 @@
 <!DOCTYPE html>
 <head>
+    <script>
+    const nameImageHash = {
+            "BdoubleO100": "https://static.wikia.nocookie.net/hermitcraft/images/5/55/BdoubleO100-face.png",
+            "Cubfan135": "https://static.wikia.nocookie.net/hermitcraft/images/7/7e/Cubfan135-face.png",
+            "Docm77": "https://static.wikia.nocookie.net/hermitcraft/images/6/66/Docm77-face.png",
+            "Ethoslab": "https://static.wikia.nocookie.net/hermitcraft/images/2/25/EthosLab-face.png",
+            "Geminitay": "https://static.wikia.nocookie.net/hermitcraft/images/2/2d/GeminiTay-face.png",
+            "GeminiTay": "https://static.wikia.nocookie.net/hermitcraft/images/2/2d/GeminiTay-face.png",
+            "Scar": "https://static.wikia.nocookie.net/hermitcraft/images/7/7f/GoodTimesWithScar-face.png",
+            "Grian": "https://static.wikia.nocookie.net/hermitcraft/images/b/bb/Grian-face.png",
+            "Hypnotizd": "https://static.wikia.nocookie.net/hermitcraft/images/d/d5/Hypnotizd-face.png",
+            "iJevin": "https://static.wikia.nocookie.net/hermitcraft/images/b/bc/IJevin-face.png",
+            "impulseSV": "https://static.wikia.nocookie.net/hermitcraft/images/e/e6/ImpulseSV-face.png",
+            "iskall85": "https://static.wikia.nocookie.net/hermitcraft/images/d/db/Iskall85-face.png",
+            "JoeHills": "https://static.wikia.nocookie.net/hermitcraft/images/4/4d/JoeHills-face.png",
+            "Keralis": "https://static.wikia.nocookie.net/hermitcraft/images/8/80/Keralis-face.png",
+            "Pearl": "https://static.wikia.nocookie.net/hermitcraft/images/f/f2/PearlescentMoon-face.png",
+            "RenDog": "https://static.wikia.nocookie.net/hermitcraft/images/3/3e/Rendog-face.png",
+            "Rendog": "https://static.wikia.nocookie.net/hermitcraft/images/3/3e/Rendog-face.png",
+            "Stress": "https://static.wikia.nocookie.net/hermitcraft/images/1/1f/StressMonster101-face.png",
+            "VintageBeef": "https://static.wikia.nocookie.net/hermitcraft/images/f/fb/VintageBeef-face.png",
+            "Xisuma": "https://static.wikia.nocookie.net/hermitcraft/images/6/67/Xisumavoid-face.png",
+            "Zedaph": "https://static.wikia.nocookie.net/hermitcraft/images/c/c8/Zedaph-face.png",
+            "ZombieCleo": "https://static.wikia.nocookie.net/hermitcraft/images/9/90/ZombieCleo-face.png",
+            "FalseSymmetry": "https://static.wikia.nocookie.net/hermitcraft/images/c/c0/FalseSymmetry-face.png",
+            "MumboJumbo": "https://static.wikia.nocookie.net/hermitcraft/images/1/15/MumboJumbo-face.png",
+            "TangoTek": "https://static.wikia.nocookie.net/hermitcraft/images/7/71/TangoTek-face.png",
+            "XB": "https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
+            "xBCrafted":"https://static.wikia.nocookie.net/hermitcraft/images/d/df/XBCrafted-face.png",
+            "Welsknight":"https://static.wikia.nocookie.net/hermitcraft/images/4/40/Welsknight-face.svg"
+    };
+    const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml';
+    </script>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,32 +49,58 @@
 <div class="Mycontent">
 
 <h1>Decked Out 2 / Player Performance Ratings</h1>
-<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> 
-    as part of his main base. <br>
+<p style="text-align: center;"><a href="https://hermitcraft.fandom.com/wiki/Decked_Out_2" style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</a> is a competitive, deck-building, dungeon crawler game created in Minecraft by <a href="https://www.youtube.com/channel/UC4YUKOBld2PoOLzk0YZ80lw">TangoTek</a> as part of his main base. <br>
 This little page tries to rate the players of <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> based on their successes and failures in the dungeon. The players are given points for wins &#128081; , 
 or subtracted points if they fail &#128128; in the <span style="font-family: 'Averia Serif Libre', cursive;">Decked Out 2</span> dungeon.<br>The amount of points added or subtracted is modified by how difficult a players run was. See <a href="#how_ratings_are_calculated">bottom of page for more info</a>.</p>
 </div>
 
 <div class="Mycontent">
-<h2>Player Rating Scoreboard</h2>
+    
+    <div class="row">
+    
+        <div class="column">
+            <h2 style="text-align: center;">Player Rating Scoreboard</h2>
 
-<p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases.<br>Standings will change as more runs become public.<br>↑↓ represents change in placement (#) from previous phase to current phase.<br>
-<span style="color: var(--highlight);font-weight: bold;">NB! Since it's manual atm, Phase 3 ratings will be delayed. Will keep Phase 2 updated, waiting on Etho runs.</span></p>
-<table id="ratingTable">
-    <thead>
-        <tr>
-            <th id="rating">#</th>
-            <th id="Rchange">↑↓</th>
-            <th id="hermit">Hermit</th>
-            <th id="phase1">Phase 2</th>
-            <th id="phase2">Phase 1</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+                <table id="ratingTable">
+                    <thead>
+                        <tr>
+                            <th id="rating">#</th>
+                            <th id="Rchange">↑↓</th>
+                            <th id="hermit">Hermit</th>
+                            <th id="phase1">Phase 2</th>
+                            <th id="phase2">Phase 1</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
 
+                <p style="font-size: 12px;text-align: center;">Table 1. Standings from current phase and previous phases.<br>Standings will change as more runs become public.<br>↑↓ represents change in placement (#) from previous phase to current phase.<br>
+                <span style="color: var(--highlight);font-weight: bold;">NB! Since it's manual atm, Phase 3 ratings will be delayed. Will keep Phase 2 updated, waiting on Etho runs.</span></p>
+                <script src="loadratingtable.js"></script>
+        </div>
+
+        <div class="column">
+            <h2 style="text-align: center;">Card Deck Power</h2>
+            
+                <table id="table-card-rating">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            <p style="font-size: 12px;text-align: center;">This metric simply divides the total cost of all a players cards by their total amount of cards. 
+            <br>Their deck power then represents the average cost per card. A higher value, means a deck contains more expensive cards, and more expensive cards should be stronger.</p>
+            <script src="deckpower.js"></script>
+        </div>
+
+    </div>
+    <div>
+
+<p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
 </div>
+</div>
+
 <div class="Mycontent">
     <h2>Recent Runs</h2>
     <p>The table will updated automatically as players do runs. But requires manual page refresh.</p>
@@ -64,6 +124,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
     </div>
     <p style="text-align: center;"><a href="https://coldbot.github.io/DO2/runs">Full view</a></p>
     <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
+    <script src="recentruns.js"></script>
 </div>
 
 <div class="Mycontent">
@@ -238,5 +299,4 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 <script src="script.js"></script>
-<script src="recentruns.js"></script>
 </sub>
