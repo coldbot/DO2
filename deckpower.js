@@ -60,6 +60,7 @@
             removeFirstColumn();
             renameHeaderInColumnOne();
             removeLast2Rows();
+            addToColumnFour();
             calculateAndSortTable();
             removeColumnsAfterFour();
             //Leaf always for last
@@ -208,6 +209,34 @@ function removeFirstColumn() {
   }
 }
 
+function addToColumnFour() {
+    // Get a reference to the table
+    var table = document.getElementById("table-card-rating");
+  
+    // Check if the table exists
+    if (table) {
+      // Loop through each row in the table
+      for (var i = 0; i < table.rows.length; i++) {
+        var row = table.rows[i];
+  
+        // Check if there are at least 4 cells in the row (fourth column)
+        if (row.cells.length >= 4) {
+          // Get the current value in the fourth column
+          var currentValue = parseFloat(row.cells[3].textContent);
+  
+          // Check if the value is a valid number
+          if (!isNaN(currentValue)) {
+            // Add 14 to the current value and round it down to the nearest integer
+            var newValue = Math.floor(currentValue + 14);
+  
+            // Update the fourth column with the new value
+            row.cells[3].textContent = newValue.toString();
+          }
+        }
+      }
+    }
+  }
+
 function calculateAndSortTable() {
   // Get a reference to the table
   var table = document.getElementById("table-card-rating");
@@ -225,14 +254,12 @@ function calculateAndSortTable() {
         var thirdColumnValue = parseFloat(row[2].textContent);
         var fourthColumnValue = parseFloat(row[3].textContent);
 
-        // Check if the value in the fourth column is not zero
-        if (fourthColumnValue !== 0) {
-          // Calculate the new value for the second column
-          var calculatedValue = (fourthColumnValue / thirdColumnValue);
+        // Calculate the new value for the second column
+        var calculatedValue = ((fourthColumnValue) / thirdColumnValue);
 
-          // Update the second column with the calculated value
-          row[1].textContent = calculatedValue.toFixed(2); // Round to two decimal places
-        }
+        // Update the second column with the calculated value
+        row[1].textContent = calculatedValue.toFixed(2); // Round to two decimal places
+        
       }
     }
     // Sort the table by the second column (index 1) in descending order
