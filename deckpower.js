@@ -65,6 +65,7 @@
             removeColumnsAfterFour();
             //Leaf always for last
             insertImagesInTable2();
+
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -255,7 +256,7 @@ function calculateAndSortTable() {
         var fourthColumnValue = parseFloat(row[3].textContent);
 
         // Calculate the new value for the second column
-        var calculatedValue = ((fourthColumnValue) / thirdColumnValue);
+        var calculatedValue = ((fourthColumnValue) / 40);
 
         // Update the second column with the calculated value
         row[1].textContent = calculatedValue.toFixed(2); // Round to two decimal places
