@@ -56,9 +56,9 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
 
 <div class="Mycontent">
     
-    <div class="row">
+    <div class="wrapper">
     
-        <div class="column">
+        <div>
             <h2 style="text-align: center;">Player Rating Scoreboard</h2>
 
                 <table id="ratingTable">
@@ -80,7 +80,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
                 <script src="loadratingtable.js"></script>
         </div>
 
-        <div class="column">
+        <div>
             <h2 style="text-align: center;">Card Deck Power</h2>
             
                 <table id="table-card-rating">
@@ -95,6 +95,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
         </div>
 
     </div>
+    
     <div>
 
 <p style="font-size: 12px;">Data source: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQrXRcKhaXrVDsUs9rcnfCSTC3K-9Q_D8Cidl4IP4rUcPeiSSNxU2fv7eHce4F_EXHZM7RJCTcSbS_b/pubhtml">DO2 Tracking (The Dungeon Archive)</a></p>
@@ -134,6 +135,7 @@ or subtracted points if they fail &#128128; in the <span style="font-family: 'Av
     <button id="button1" class="button selected">All phases</button> 
     <button id="button2" class="button">Phase 1</button> 
     <button id="button3" class="button">Phase 2</button> 
+
 </div>
 
 <br><br>
@@ -195,7 +197,7 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 <p>As <b>E</b> values will change a lot during a phase (every new run brings a new estimate), expect player ratings to also change a lot during an active phase. Player ratings are only fixed for phases that are completed and were all the runs for the phase is accounted for.</p>
 </p>
 <div class="spacer"></div>
-    <table id="difficulty_factor_table">
+    <table  id="difficulty_factor_table">
         <p style="font-size: 12px;text-align: center;">Table 2. Difficulty Factors (<b>E</b>) used. The probability of a player doing a successful DO2 run with X difficulty and Y artifact level location. Easy and Medium LvL 1 is combined, to avoid "noob bias"*.</p>
         <thead>
         <tr>
@@ -299,4 +301,6 @@ If <b>E</b> is high, say 0.8, a player will gain 6.4 points if they succeed or l
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 <script src="script.js"></script>
+<script src="sortTable.js"></script>
+
 </sub>
