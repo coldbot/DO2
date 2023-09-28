@@ -75,6 +75,7 @@ tr:nth-child(even) {
     font-weight: bold;
 }
 
+
 #ratingTable tr:nth-child(1) td:nth-child(1) {
     background-color: gold;
     color: black;
@@ -104,6 +105,22 @@ tr:nth-child(even) {
     background-color: rgb(205, 127, 50);
     color: black;
     font-weight: bold;
+}
+
+
+#table-card-rating td:nth-child(1){
+    text-align: left;
+    padding-left: 20px;
+}
+
+#ratingTable td:nth-child(3){
+    text-align: left;
+    padding-left: 20px;
+}
+
+#data-table-runs td:nth-child(2){
+    text-align: left;
+    padding-left: 20px;
 }
 
 tr:hover {
