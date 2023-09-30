@@ -47,6 +47,12 @@ document.getElementById("button3").addEventListener("click", function () {
 
 });
 
+document.getElementById("button4").addEventListener("click", function () {
+    myCSV = "phase3_modified_data.csv";
+    updateChart(myCSV); // Update the chart when the CSV changes
+
+});
+
 function updateChart(newCSV) {
     Papa.parse(newCSV, {
         download: true,
@@ -178,6 +184,21 @@ Papa.parse(myCSV, {
                                 yAdjust: 0, // Adjust the label's vertical position
                             },
                         },
+                        {
+                            type: 'line',
+                            mode: 'vertical',
+                            scaleID: 'x',
+                            value: 465, // X-coordinate where you want to draw the line
+                            borderColor: 'rgb(241,235,221)', // Color of the line
+                            borderWidth: myborder, // Width of the line
+                            label: {
+                                content: 'Phase 3', // Label text
+                                enabled: true, // Set to false to hide the label
+                                backgroundColor: 'rgb(241,235,221)',
+                                color: 'black',
+                                yAdjust: 0, // Adjust the label's vertical position
+                            },
+                        },
                     ],
                 },
                 legend: {
@@ -296,3 +317,74 @@ document.getElementById('toggle').addEventListener('click', function () {
     });
     myChart.update(); // Update the chart to reflect the changes
 });
+
+
+
+/// Sort tables
+
+
+// Function to toggle the sorting order
+function toggleSortOrder(currentOrder) {
+    return currentOrder === 'asc' ? 'desc' : 'asc';
+  }
+  
+  // Function to sort the table by a specific column
+  function sortTableByColumn(table, columnIndex, sortOrder) {
+    // Get the table body rows as an array
+    var rows = Array.from(table.tBodies[0].rows);
+  
+    // Sort the rows based on the column's data
+    rows.sort(function (a, b) {
+      var valueA = a.cells[columnIndex].textContent.trim();
+      var valueB = b.cells[columnIndex].textContent.trim();
+  
+      if (!isNaN(valueA) && !isNaN(valueB)) {
+        // Compare as numbers if both values are numeric
+        return sortOrder === 'asc' ? valueA - valueB : valueB - valueA;
+      } else {
+        // Compare as strings if one or both values are non-numeric
+        return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+      }
+    });
+  
+    // Update the table with the sorted rows
+    rows.forEach(function (row) {
+      table.tBodies[0].appendChild(row);
+    });
+  }
+  
+  // Function to initialize table sorting
+  function initializeTableSorting() {
+    var table = document.getElementById("table-card-rating");
+  
+    // Check if the table exists
+    if (table) {
+      // Attach click event listeners to the table header cells
+      var headerCells = table.tHead.rows[0].cells;
+      var sortOrder = {}; // To keep track of sorting order for each column
+  
+      for (var i = 0; i < headerCells.length; i++) {
+        headerCells[i].addEventListener("click", function () {
+          var columnIndex = this.cellIndex;
+  
+          // Toggle the sorting order
+          sortOrder[columnIndex] = toggleSortOrder(sortOrder[columnIndex]);
+  
+          // Sort the table by the clicked column
+          sortTableByColumn(table, columnIndex, sortOrder[columnIndex]);
+  
+          // Remove sorting indicators from other columns
+          for (var j = 0; j < headerCells.length; j++) {
+            if (j !== columnIndex) {
+              headerCells[j].classList.remove("sorted-asc", "sorted-desc");
+            }
+          }
+  
+          // Add a sorting indicator to the clicked column header
+          this.classList.toggle("sorted-asc", sortOrder[columnIndex] === 'asc');
+          this.classList.toggle("sorted-desc", sortOrder[columnIndex] === 'desc');
+        });
+      }
+    }
+  }
+  
