@@ -56,19 +56,21 @@ fetch(googleSheetURL)
         deleteFirstRow();
         removeRowsWithoutAlphabeticalCharacters();
         //showLast10Rows();
-        insertImagesInTable();
         reverseTableRows();
-        //colorColumn34Yellow();
         //updateRatingChange();
         removeColumnsAfterTen();
+
+        insertImagesInTable();
     })
     .catch(error => {
         console.error('Error fetching data:', error);
     });
 
 
-        // Function to remove unwanted columns
-function removeUnwantedColumns() {
+
+
+
+    function removeUnwantedColumns() {
     const table = document.getElementById("data-table-runs");
     if (table) {
         const rows = table.getElementsByTagName("tr");
@@ -76,7 +78,7 @@ function removeUnwantedColumns() {
         for (let i = 0; i < rows.length; i++) {
             const cells = rows[i].getElementsByTagName("td");
             // Define an array of column indices you want to remove
-            const columnsToRemove = [2, 3, 4, 5, 6, 7,10,14,15,17,18,20, 22, 23,24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
+            const columnsToRemove = [2, 3, 4, 5, 6, 7,10,14,15,16,18,20,21, 23,24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
 
             for (let j = columnsToRemove.length - 1; j >= 0; j--) {
                 const columnIndex = columnsToRemove[j];
